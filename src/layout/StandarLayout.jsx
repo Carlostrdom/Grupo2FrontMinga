@@ -8,7 +8,6 @@ function StandarLayout() {
   return (
     <>
       <NavBar />
-
       <main>
         <Outlet></Outlet>
       </main>
