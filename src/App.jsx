@@ -18,6 +18,7 @@ import StandarLayout from "./layout/StandarLayout";
 // import CompanyProfile from "./pages/CompanyProfile";
 // import EditCompany from "./pages/EditCompany";
 // import Favourite from "./pages/Favourite";
+import SignIn from "./pages/SignIn"
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       // { path: "/chapter-form", element: <ChapterForm /> },
       // { path: "/edit-company", element: <EditCompany /> },
       // { path: "/edit-chapter", element: <EditChapter /> },
-      // {path: "/signInRegister", element: <SignInRegister/>},
+      {path: "/signIn", element: <SignIn/>},
       // {path: "/signUpRegister", element: <SignUpRegister/>},
       // {
       //   path: "*",
