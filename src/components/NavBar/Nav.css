@@ -1,0 +1,41 @@
+@tailwind components;
+
+@tailwind utilities;
+
+@tailwind base;
+
+
+
+@layer components {
+    .header{
+        @apply absolute w-full h-[15vh] bg-transparent flex justify-center z-40
+    }
+
+    .navbar{
+        @apply flex justify-between items-center w-[86%]
+    }
+
+    .btn-hamburg{
+        @apply w-[8vh] h-[8vh] 
+    }
+
+    .MenuHamburg{
+        @apply w-full h-full
+    }
+
+    .contentLogo{
+        @apply h-[8vh] flex items-center
+    }
+    .Logo{
+        @apply  h-[8vh] hidden md:block
+    }
+
+    .imagenLogo{
+        @apply ms-3 text-5xl text-white font-bold 
+    }
+
+
+    
+}
+
+
