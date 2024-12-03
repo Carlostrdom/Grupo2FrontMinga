@@ -10,7 +10,9 @@ const SignIn = ()=>{
                 </div>
                 <div className="w-[50%] h-full flex items-center">
                     <form className="w-[50%] h-[50%] " action="">
-                        <p>Prueba</p>
+                       <divclas>
+                        <p>Welcome back!</p>
+                       </divclas>
                     </form>
                 </div>
         </div>
