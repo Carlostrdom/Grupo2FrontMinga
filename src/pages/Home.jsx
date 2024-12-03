@@ -1,5 +1,6 @@
 import Hero from "../components/Hero/Hero"
 import imagenHome from "../assets/image/bgHome.png"
+import { useNavigate } from "react-router-dom"
 //Con este componente vamos a repetir en todo las pages principales y tener en cuenta que hay que remplazar las imagen y el texto segun la pages.
 const HeroHome = ({handleClick})=>{
     return(
@@ -21,8 +22,9 @@ const HeroHome = ({handleClick})=>{
 
 
 const Home=()=> {
+    const navigate = useNavigate()
     const handleClick=() => {
-
+    navigate("/signIn")
     }
     return (
         <>
