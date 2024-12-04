@@ -1,5 +1,6 @@
 import React from 'react'
 import bgMangaImg from '../assets/image/bgMangas.jpg'
+import CardMangas from '../components/CardMangas/CardMangas';
 const HeroManga = () =>{
 
 return (
@@ -28,6 +29,7 @@ export default function Mangas() {
   return (
     <>
     <HeroManga/>
+    <CardMangas/>
     
     </>
   )

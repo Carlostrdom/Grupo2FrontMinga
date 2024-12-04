@@ -1,6 +1,7 @@
 import Hero from "../components/Hero/Hero"
 import imagenHome from "../assets/image/bgHome.png"
 import { useNavigate } from "react-router-dom"
+import Carousel from "../components/Carousel/Carousel"
 //Con este componente vamos a repetir en todo las pages principales y tener en cuenta que hay que remplazar las imagen y el texto segun la pages.
 const HeroHome = ({handleClick})=>{
     return(
@@ -29,6 +30,7 @@ const Home=()=> {
     return (
         <>
        <HeroHome handleClick={handleClick} ></HeroHome>
+        <Carousel/>
         <div>
 
         </div>
