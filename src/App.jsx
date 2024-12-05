@@ -7,8 +7,8 @@ import Home from "./pages/Home";
 // import NotFound from "./pages/NotFound";
 import StandarLayout from "./layout/StandarLayout";
 // import AdminPanel from "./pages/AdminPanel";
-// import AuthorProfile from "./pages/AuthorProfile";
-// import Manager from "./pages/Manager";
+import AuthorProfile from "./pages/AuthorProfile";
+import Manager from "./pages/Manager";
  import Mangas from "./pages/Mangas";
 // import NewRole from "./pages/NewRole";
 // import EditAutor from "./pages/EditAutor";
@@ -29,11 +29,11 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       // { path: "/favourite", element: <Favourite /> },
-      // { path: "/author-profile", element: <AuthorProfile /> },
-      // { path: "/manager", element: <Manager /> },
+      { path: "/authorprofile", element: <AuthorProfile /> },
+      { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
-      // { path: "/new-role", element: <NewRole /> }, 
-      // { path: "/edit-author", element: <EditAutor /> },
+      // { path: "/newrole", element: <NewRole /> }, 
+      // { path: "/editauthor", element: <EditAutor /> },
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editCompany", element: <EditCompany /> },
