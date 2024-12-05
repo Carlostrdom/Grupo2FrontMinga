@@ -1,38 +1,13 @@
 import React from "react";
 import { CgAdd } from "react-icons/cg";
 import { LuCircleSlash } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
 
 const CardSuperman = () => {
-    const mangas = [
-        {
-            title: "Superman Comic",
-            typeColor: "text-orange-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-yellow-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-pink-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-purple-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-    ];
+  const {mangas, loading, error } = useSelector(state => state.mangasStore);
+  const {category} = useSelector(state => state.categoryStore);
+  let dispatch = useDispatch();  
+  
 
     return (
         <div className="relative -mt-12 px-8">
@@ -73,7 +48,7 @@ const CardSuperman = () => {
     
                   <div className="w-1/3 h-full overflow-hidden relative">
                     <img
-                      src={manga.imageUrl}
+                      src={manga.cover_photo}
                       alt={manga.title}
                       className="absolute inset-0 w-full h-full object-cover rounded-l-full rounded-r-lg"
                     />
