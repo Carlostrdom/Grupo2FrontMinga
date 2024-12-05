@@ -12,7 +12,7 @@ function StandarLayout() {
         <Outlet></Outlet>
       </main>
 
-     {/* <Footer></Footer>  */}
+     <Footer></Footer> 
 
     </>
   );

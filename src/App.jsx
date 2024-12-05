@@ -7,13 +7,14 @@ import Home from "./pages/Home";
 // import NotFound from "./pages/NotFound";
 import StandarLayout from "./layout/StandarLayout";
 // import AdminPanel from "./pages/AdminPanel";
-// import AuthorProfile from "./pages/AuthorProfile";
-// import Manager from "./pages/Manager";
+import AuthorProfile from "./pages/AuthorProfile";
+import Manager from "./pages/Manager";
  import Mangas from "./pages/Mangas";
 import NewRole from "./pages/NewRole";
 // import EditAutor from "./pages/EditAutor";
 // import Chapter from "./pages/Chapter";
 // import ChapterForm from "./pages/ChapterForm";
+// import EditChapter from "./pages/EditChapter";
 // import EditChapter from "./pages/EditChapter";
  import EditChapter from "./pages/EditChapter";
 // import CompanyProfile from "./pages/CompanyProfile";
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       // { path: "/favourite", element: <Favourite /> },
-      // { path: "/author-profile", element: <AuthorProfile /> },
-      // { path: "/manager", element: <Manager /> },
+      { path: "/authorprofile", element: <AuthorProfile /> },
+      { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
       { path: "/newRole", element: <NewRole /> }, 
       // { path: "/edit-author", element: <EditAutor /> },
@@ -41,7 +42,6 @@ const router = createBrowserRouter([
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editCompany", element: <EditCompany /> },
       // { path: "/editChapter", element: <EditChapter /> },
-         
       // {path: "*", element: <NotFound /> },
       // {path:"/adminPanel", element: <AdminPanel />},
       // {path:"/authorFomr", element: <AuthorForm />},
@@ -53,7 +53,8 @@ const router = createBrowserRouter([
   },
   {
     element: <StandarLayoutNav />, 
-    children: [    {path: "/editChapter", element: <EditChapter /> },
+    children: [    
+      {path: "/editChapter", element: <EditChapter /> },
       {path: "/signIn", element: <SignIn/>},
       {path: "/signUpRegister", element: <SignUpRegister/>},
       {path: "/editManga", element: <EditManga/>},
