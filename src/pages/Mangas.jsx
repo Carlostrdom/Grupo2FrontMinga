@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import bgMangaImg from '../assets/image/bgMangas.jpg'
-import CardMangas from '../components/CardMangas/CardMangas';
-import CardSuperman from '../components/CardSuperman/CardSuperman';
+import CardMangas from '../components/CardMangas/CardMangas'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchmangas, setSearch } from '../store/action/actionmangas/actionmangas';
+import { fetchcategory } from '../store/action/actioncategory/actioncategory';
 
 const HeroManga = () =>{
+  const { search} = useSelector(state => state.mangasStore);
+  const {selecCategory} = useSelector(state => state.categoryStore);
+let  dispatch = useDispatch();
+useEffect(() => {
+  if(search != "" || selecCategory != ""){
+    const data = search != "" ? {search: search} : selecCategory != "" ? {category:selecCategory} : {};
+    dispatch(fetchmangas(data));
+  }
+}, [search, dispatch,selecCategory]);
 
 return (
+
   <div className="w-full h-[75vh] relative flex items-center">
   <img src={bgMangaImg} className="w-full h-full object-cover" alt="Background Manga" />
   <div className="absolute flex flex-col items-center w-full justify-center -mt-10">
@@ -17,6 +29,8 @@ return (
         </svg>
         <input
           type="text"
+          value={search}
+          onChange={(e) => dispatch(setSearch(e.target.value))}
           className="w-[80vh] h-full bg-transparent focus:outline-none"  
           placeholder="Find your manga here"
         />
@@ -28,11 +42,17 @@ return (
 };
 
 export default function Mangas() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchmangas())
+    dispatch(fetchcategory())
+    
+  }, []);
   return (
     <>
     <HeroManga/>
-    {/* <CardMangas/> */}
-    <CardSuperman/>
+    <CardMangas/>
    
     
     </>

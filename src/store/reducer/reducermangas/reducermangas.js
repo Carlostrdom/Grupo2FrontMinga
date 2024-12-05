@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { fetchmangas, setSearch, selectMangas } from "../../action/actionmangas/actionmangas";
+import { fetchmangas,  setSearch } from "../../action/actionmangas/actionmangas";
 
 const initialState = {
     mangas: [],
@@ -20,8 +20,6 @@ const reduxMangas = createReducer(initialState, (builder) => {
     }).addCase(fetchmangas.rejected, (state) => {
         state.loading = false;
         state.error = true;
-    }).addCase(selectMangas, (state, action) => {
-        state.mangas = action.payload;
     })
 });
 export default reduxMangas;
