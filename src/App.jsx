@@ -14,12 +14,14 @@ import StandarLayout from "./layout/StandarLayout";
 // import EditAutor from "./pages/EditAutor";
 // import Chapter from "./pages/Chapter";
 // import ChapterForm from "./pages/ChapterForm";
-import EditChapter from "./pages/EditChapter";
+ import EditChapter from "./pages/EditChapter";
 // import CompanyProfile from "./pages/CompanyProfile";
 // import EditCompany from "./pages/EditCompany";
 // import Favourite from "./pages/Favourite";
 import SignIn from "./pages/SignIn"
 import SignUpRegister from "./pages/SignUpRegister"
+import StandarLayoutNav from "./layout/StandarLayoutNav";
+import EditManga from "./pages/EditMangaPage";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editCompany", element: <EditCompany /> },
-      { path: "/editChapter", element: <EditChapter /> },
+      // { path: "/editChapter", element: <EditChapter /> },
       {path: "/signIn", element: <SignIn/>},
       {path: "/signUpRegister", element: <SignUpRegister/>},
       // {path: "*", element: <NotFound /> },
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
       // {path:"/companyProfile", element: <CompanyProfile />},
 
     ],
-  },  
+  },
  
   
 ]);
