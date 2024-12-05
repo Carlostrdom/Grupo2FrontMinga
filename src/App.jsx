@@ -41,9 +41,6 @@ const router = createBrowserRouter([
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editCompany", element: <EditCompany /> },
       // { path: "/editChapter", element: <EditChapter /> },
-      {path: "/signIn", element: <SignIn/>},
-      {path: "/signUpRegister", element: <SignUpRegister/>},
-    
       // {path: "*", element: <NotFound /> },
       // {path:"/adminPanel", element: <AdminPanel />},
       // {path:"/authorFomr", element: <AuthorForm />},
@@ -55,7 +52,8 @@ const router = createBrowserRouter([
   },
   {
     element: <StandarLayoutNav />, 
-    children: [    {path: "/editChapter", element: <EditChapter /> },
+    children: [    
+      {path: "/editChapter", element: <EditChapter /> },
       {path: "/signIn", element: <SignIn/>},
       {path: "/signUpRegister", element: <SignUpRegister/>},
       {path: "/editManga", element: <EditManga/>},
