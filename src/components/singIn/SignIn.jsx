@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 function SignInLogin() {
   return (
-    <div className="w-full max-w-md mx-auto ">
+    <div className=" max-w-md mx-auto sm: w-1/2 h-1/2 ">
       {/* Logo */}
       <div className="text-center mb-6">
-        <img className="mx-auto w-[10vw] h-[8vh]" src={LogoDos} alt="Minga Logo" />
+        <img className="mx-auto  w-32" src={LogoDos} alt="Minga Logo" />
         <h2 className="text-2xl font-bold text-gray-700 mt-4">
           Welcome <span className="text-orange-500">back!</span>
         </h2>

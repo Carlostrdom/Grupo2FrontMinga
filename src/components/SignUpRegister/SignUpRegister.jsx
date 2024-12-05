@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 function SignUpRegister() {
     return (
-        <div className="flex w-full min-h-screen overflow-hidden">
+        <div className="flex w-full min-h-screen  ">
 
-            <div className="w-[50%]  md:w-[50%] flex items-center justify-center bg-gray-50">
-                <form className="w-[50%] max-w-md">
+            <div className="w-full md:w-[50%] flex items-center justify-center bg-gray-50">
+                <form className="sd:w-[50] h-[80%] md:w-[60%] ">
 
                     <div className="text-center mb-6">
-                        <img className="mx-auto w-32 h-32" src={imagenHome} alt="Minga Logo" />
+                        <img className="mx-auto w-23 h-16" src={imagenHome} alt="Minga Logo" />
                         <h2 className="text-2xl font-bold text-gray-700 mt-4">Welcome back!</h2>
                         <p className="text-sm text-gray-500 mt-2">
                             Discover manga, manhua and manhwa, track your progress, have fun, read manga.
@@ -164,7 +164,7 @@ function SignUpRegister() {
                 </form>
             </div>
             {/* imagen  */}
-            <div className="flex h-full w-[50%]">
+            <div className="flex h-[100vh] w-[50%]">
                 <div className="flex flex-1 items-center justify-center bg-gray-50">
                 </div>
                 <div className="   hidden   md:flex w-full">

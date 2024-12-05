@@ -1,0 +1,8 @@
+.imgRole{
+    height: 10vh;
+    width: 10wh;
+    background-image: url(https://img.freepik.com/psd-gratis/mujer-joven-sonriente-manos-su-espalda_1154-300.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+}
