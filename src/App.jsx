@@ -15,17 +15,20 @@ import Manager from "./pages/Manager";
 // import Chapter from "./pages/Chapter";
 // import ChapterForm from "./pages/ChapterForm";
 // import EditChapter from "./pages/EditChapter";
+ import EditChapter from "./pages/EditChapter";
 // import CompanyProfile from "./pages/CompanyProfile";
 // import EditCompany from "./pages/EditCompany";
 // import Favourite from "./pages/Favourite";
 import SignIn from "./pages/SignIn"
 import SignUpRegister from "./pages/SignUpRegister"
+import StandarLayoutNav from "./layout/StandarLayoutNav";
+import EditManga from "./pages/EditMangaPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <StandarLayout />, 
-    
+
     children: [
       { path: "/", element: <Home /> },
       // { path: "/favourite", element: <Favourite /> },
@@ -38,8 +41,6 @@ const router = createBrowserRouter([
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editCompany", element: <EditCompany /> },
       // { path: "/editChapter", element: <EditChapter /> },
-      {path: "/signIn", element: <SignIn/>},
-      {path: "/signUpRegister", element: <SignUpRegister/>},
       // {path: "*", element: <NotFound /> },
       // {path:"/adminPanel", element: <AdminPanel />},
       // {path:"/authorFomr", element: <AuthorForm />},
@@ -49,11 +50,21 @@ const router = createBrowserRouter([
 
     ],
   },
- 
+  {
+    element: <StandarLayoutNav />, 
+    children: [    
+      {path: "/editChapter", element: <EditChapter /> },
+      {path: "/signIn", element: <SignIn/>},
+      {path: "/signUpRegister", element: <SignUpRegister/>},
+      {path: "/editManga", element: <EditManga/>},
+    ]
+  }
   
-  
- 
-  
+
+
+
+
+
 ]);
 
 // const loginWithToken = async (token) => {
@@ -83,4 +94,3 @@ function App() {
 }
 
 export default App;
-
