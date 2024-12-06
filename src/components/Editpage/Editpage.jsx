@@ -17,9 +17,9 @@ const EditPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50">
-            <div className="flex gap-16">
-                <div className="w-72 rounded-lg p-6 text-center bg-white shadow-lg">
+        <div className="flex justify-center items-center min-h-screen">
+            <div className="flex gap-56">
+                <div className="w-72 rounded-lg p-6 text-center ">
                     <h2 className="text-2xl font-semibold text-gray-800 mb-6">Edit Chapter</h2>
 
                     <div className="mb-4 mt-12">
@@ -71,13 +71,13 @@ const EditPage = () => {
                     <div className="flex flex-col gap-4">
                         <button
                             onClick={handleEdit}
-                            className="bg-green-500 text-white py-2 rounded-full font-bold text-sm shadow-md hover:bg-green-600 transition duration-300"
+                            className="bg-green-500 text-white py-2 rounded-full font-bold text-sm shadow-md hover:bg-green-600 transition duration-300 pt-4 pb-4"
                         >
                             Edit
                         </button>
                         <button
                             onClick={handleDelete}
-                            className="bg-red-100 text-red-500 py-2 rounded-full font-bold text-sm shadow-md hover:bg-red-200 transition duration-300"
+                            className="bg-red-100 text-red-500 py-2 rounded-full font-bold text-sm shadow-md hover:bg-red-200 transition duration-300 pt-4 pb-4"
                         >
                             Delete
                         </button>
