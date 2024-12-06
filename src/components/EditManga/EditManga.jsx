@@ -17,8 +17,9 @@ const CompManga = () => {
     };
 
     return (
-        <div className="flex gap-44 justify-center items-center mt-20 relative">
+        <div className="flex justify-center items-center min-h-screen">
             {/* Form Section */}
+            <div className="flex gap-56">
             <div className="w-72 rounded-lg p-6 text-center ">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">Edit Manga</h2>
 
@@ -94,6 +95,7 @@ const CompManga = () => {
                     src="https://s3-alpha-sig.figma.com/img/c698/cc3f/21fb3f85f083e6806f525d147a260d5a?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TZlZIvHXfkR~DQBAYQmN4hGrrfNsNaOqUtlCkkaTgoRnG79-nmRcQ5SnWcA9XPwujPbmGyKxVb1wdzHSMF7GnFMv3I9xqg1adjIG8Nz7JNWEHeiXmITxL1OPjsiJfP3hQ6RUEF8EmuB9nMqEK4Tw8G79~p4NBuZ~uFNwJOws4gUfrDJODqCY26oRBkKOtSMjnn1ztpYY08wgkJeAQUDG~hht8pZTeB1-MssahEw2OvXOojM0X8yCDjmjSwWVfRXLWQy-sTnefTV0ba4bGWuQM4eFivT73hJZUda9jfF8RtuulN6UfIhCx-Sk036hHSKSw3DvKffg9tm2jWqQD9KAmg__"
                     alt="Manga Preview"
                 />
+            </div>
             </div>
         </div>
     );

@@ -9,21 +9,25 @@ import StandarLayout from "./layout/StandarLayout";
 // import AdminPanel from "./pages/AdminPanel";
 import AuthorProfile from "./pages/AuthorProfile";
 import Manager from "./pages/Manager";
- import Mangas from "./pages/Mangas";
+import Mangas from "./pages/Mangas";
 import NewRole from "./pages/NewRole";
-// import EditAutor from "./pages/EditAutor";
+import EditAuthor from "./pages/EditAuthor";
 // import Chapter from "./pages/Chapter";
 // import ChapterForm from "./pages/ChapterForm";
 // import EditChapter from "./pages/EditChapter";
 // import EditChapter from "./pages/EditChapter";
  import EditChapter from "./pages/EditChapter";
 // import CompanyProfile from "./pages/CompanyProfile";
-// import EditCompany from "./pages/EditCompany";
+import EditCompany from "./pages/EditCompany";
 // import Favourite from "./pages/Favourite";
-import SignIn from "./pages/SignIn"
-import SignUpRegister from "./pages/SignUpRegister"
+import SignIn from "./pages/SignIn";
+import SignUpRegister from "./pages/SignUpRegister";
 import StandarLayoutNav from "./layout/StandarLayoutNav";
 import EditManga from "./pages/EditMangaPage";
+import NewMangaForm from "./components/CreateManga/NewManga";
+import NewCahpterForm from "./components/CreateChapter/NewChapter";
+import NewAuthorForm from "./components/CreateAuthor/NewAuthor";
+import NewCompanyForm from "./components/CreateCompany/NewCompany";
 
 const router = createBrowserRouter([
   {
@@ -36,11 +40,10 @@ const router = createBrowserRouter([
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
-      { path: "/newRole", element: <NewRole /> }, 
-      // { path: "/edit-author", element: <EditAutor /> },
+      {path: "/newRole", element: <NewRole /> }, 
+      
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
-      // { path: "/editCompany", element: <EditCompany /> },
       // { path: "/editChapter", element: <EditChapter /> },
       // {path: "*", element: <NotFound /> },
       // {path:"/adminPanel", element: <AdminPanel />},
@@ -58,6 +61,12 @@ const router = createBrowserRouter([
       {path: "/signIn", element: <SignIn/>},
       {path: "/signUpRegister", element: <SignUpRegister/>},
       {path: "/editManga", element: <EditManga/>},
+      {path: "/edit-author", element: <EditAuthor /> },
+      {path: "/editCompany", element: <EditCompany /> },
+      {path:"/newManga", element: <NewMangaForm />},
+      {path: "/newChapter", element: <NewCahpterForm /> },
+      {path: "/newAuthor", element: <NewAuthorForm /> },
+      {path: "/newCompany", element: <NewCompanyForm /> },
     ]
   }
   
