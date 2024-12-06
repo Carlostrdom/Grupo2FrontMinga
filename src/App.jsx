@@ -73,6 +73,7 @@ const router = createBrowserRouter([
       {path: "/newChapter", element: <NewCahpterForm /> },
       {path: "/newAuthor", element: <NewAuthorForm /> },
       {path: "/newCompany", element: <NewCompanyForm /> },
+      {path: "/newRole", element: <NewRole /> }, 
     ]
   }
   
