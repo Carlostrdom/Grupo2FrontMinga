@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogoDos from '../../assets/image/LOGO_DOS.png';
 import imagenGoogle from '../../assets/image/imagenGoogle.png';
+import { useDispatch, useSelector } from "react-redux";
 
 function SignInLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const signinStore = useSelector((state) => state.signinStore);
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:8080/api/auth/signIn/google";    
+  };
+
+  const loading = signinStore.loading;
+  console.log(loading);
+  
+  const error = signinStore.error;
+  console.log(error);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
@@ -19,7 +39,8 @@ function SignInLogin() {
         </div>
 
         {/* Formulario */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
+        
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -29,6 +50,8 @@ function SignInLogin() {
               <input
                 id="email"
                 type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
@@ -57,7 +80,10 @@ function SignInLogin() {
             <input
               id="password"
               type="password"
-              placeholder="••••••••"
+              value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                
+            placeholder="••••••••"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 mt-1"
             />
           </div>
@@ -72,17 +98,17 @@ function SignInLogin() {
             </button>
           </div>
 
-          {/* Botón de Google */}
-          <div>
-            <button
-              type="button"
-              className="w-full flex items-center justify-center bg-white text-gray-700 border rounded-lg py-2 shadow-sm hover:bg-gray-100"
-            >
-              <img src={imagenGoogle} alt="Google" className="w-5 h-5 mr-2" />
-              Sign in with Google
-            </button>
-          </div>
-        </form>
+        {/* Botón de Google */}
+        <div>
+          <button
+            type="button"
+            className="w-full flex items-center justify-center bg-white text-gray-700 border rounded-lg py-2 shadow-sm hover:bg-gray-100"
+            onClick={() => handleGoogleLogin()}>
+            <img src={imagenGoogle} alt="Google" className="w-5 h-5 mr-2" />
+            Sign in with Google
+          </button>
+        </div>
+      </form>
 
         {/* Links de ayuda */}
         <div className="mt-6 text-center">

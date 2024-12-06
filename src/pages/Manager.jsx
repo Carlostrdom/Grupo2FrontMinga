@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import bgMyManager from '../assets/image/bgMyMangas.jpg'
 
 import CardSuperman from '../components/CardSuperman/CardSuperman';
+import { useDispatch } from 'react-redux';
+import { fetchmangas } from '../store/action/actionmangas/actionmangas';
+import { fetchcategory } from '../store/action/actioncategory/actioncategory';
 
 const HeroManager = () =>{
 
@@ -21,6 +24,13 @@ return (
 };
 
 export default function Manager() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchmangas())
+    dispatch(fetchcategory())
+    
+  }, []);
   return (
     <>
     <HeroManager/>

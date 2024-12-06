@@ -1,52 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CgAdd } from "react-icons/cg";
 import { LuCircleSlash } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchcategory, setCategory } from "../../store/action/actioncategory/actioncategory";
+import { fetchmangas } from "../../store/action/actionmangas/actionmangas";
+
 
 const CardSuperman = () => {
-    const mangas = [
-        {
-            title: "Superman Comic",
-            typeColor: "text-orange-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-yellow-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-pink-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-        {
-            title: "Superman Comic",
-            typeColor: "text-purple-500",
-            borderColor: "border-purple-500",
-            imageUrl:
-                "https://s3-alpha-sig.figma.com/img/571a/e2f3/af94054c21b404db18ffb2222cfc8274?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Tm1dzjt3iR7brKs6Il5OAYLRT0kYesGIPJyOMBo3rV7jmqT3lOPDkqpvVshs-V8WyWiAwCQaMxoQUty87cnzq3n5Hdisoqp0uW6UKkiCLwkIXdUoYjgU4VVh-3e8DamvS11b78peLPAH83LWXnR0y4B3gUIbBSv7yYVKlsQ72Iin0NnNSgrg0j51QfXXHUoLTaecp9TGbNzY-~o-~X1CEEQvSvmKxnVpbCw9lEVTQarsPJg-FxrkazIULtn2C3xRK9E2BQhnk99Ax6eMOVU0WlFPOj5-mxT2AVnnb2j6NDYFv0Y6L~jBfQOhV0TOAN7Ip5-BnodUBquMOANTgDCRiA__",
-        },
-    ];
+  const {mangas, loading, error } = useSelector(state => state.mangasStore);
+  const {category, selecCategory} = useSelector(state => state.categoryStore);
+ console.log(category,"manger");
+ 
+  let dispatch = useDispatch();  
+  useEffect(() => {
+    dispatch(fetchmangas({category:selecCategory}))
+    
+  },[selecCategory])
 
     return (
         <div className="relative -mt-12 px-8">
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-[90%] mx-auto relative z-10">
-            <div className="flex pt-6 gap-4 mb-6 ml-44">
-              <button className="px-4 py-2 rounded-lg bg-gray-900 text-white">All</button>
-              <button className="px-4 py-2 rounded-lg bg-red-200 text-gray-700">Shonen</button>
-              <button className="px-4 py-2 rounded-lg bg-yellow-200 text-gray-700">Seinen</button>
-              <button className="px-4 py-2 rounded-lg bg-green-200 text-gray-700">Shojo</button>
-              <button className="px-4 py-2 rounded-lg bg-purple-200 text-gray-700">Kodomo</button>
-            </div>
+          <div className="flex flex-wrap gap-4 pt-6 mb-6 justify-center md:justify-start">
+  <button
+    onClick={() => dispatch(setCategory(null))}
+    className="px-4 py-2 rounded-full text-sm font-semibold bg-slate-400 text-white hidden md:block"
+  >
+    All
+  </button>
+  {category.length > 0 &&
+    category
+      .slice()
+      .reverse()
+      .map((categ, index) => (
+        <button
+          style={{ color: categ.shadow, backgroundColor: categ.color }}
+          onClick={() => dispatch(setCategory(categ._id))}
+          key={index}
+          className="px-4 py-2 rounded-full text-sm font-semibold"
+        >
+          {categ.name}
+        </button>
+      ))}</div>
     
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
-              {mangas.map((manga, index) => (
+              {mangas.length > 0 && mangas.map((manga, index) => (
                 <div
                   key={index}
                   className={`w-[90%] md:w-[402px] h-[178px] bg-white shadow-md rounded-lg flex overflow-hidden border-l-4 ${manga.borderColor} relative`}
@@ -73,7 +70,7 @@ const CardSuperman = () => {
     
                   <div className="w-1/3 h-full overflow-hidden relative">
                     <img
-                      src={manga.imageUrl}
+                      src={manga.cover_photo}
                       alt={manga.title}
                       className="absolute inset-0 w-full h-full object-cover rounded-l-full rounded-r-lg"
                     />
