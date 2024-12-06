@@ -24,6 +24,9 @@ import SignIn from "./pages/SignIn"
 import SignUpRegister from "./pages/SignUpRegister"
 import StandarLayoutNav from "./layout/StandarLayoutNav";
 import EditManga from "./pages/EditMangaPage";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,9 @@ const router = createBrowserRouter([
 
     children: [
       { path: "/", element: <Home /> },
+      { path: "/home", element: <Home /> },
+
+      
       // { path: "/favourite", element: <Favourite /> },
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
@@ -68,28 +74,28 @@ const router = createBrowserRouter([
 
 ]);
 
-// const loginWithToken = async (token) => {
-//   try {
-//     const response = await axios.get("http://localhost:8080/api/auth/token", {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error during token authentication:", error);
-//   }
-// };
+const loginWithToken = async (token) => {
+  try {
+    const response = await axios.get("http://localhost:8080/api/auth/token", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error during token authentication:", error);
+  }
+};
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     loginWithToken(token).then((user) => {
-  //       if (user) dispatch(setUser({ user, token }));
-  //     });
-  //   }
-  // }, [dispatch]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      loginWithToken(token).then((user) => {
+        if (user) dispatch(setUser({ user, token }));
+      });
+    }
+  }, [dispatch]);
 
   return <RouterProvider router={router} />;
 }

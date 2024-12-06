@@ -18,10 +18,6 @@ const HeroHome = ({handleClick})=>{
 }
 
 
-
-
-
-
 const Home=()=> {
     const navigate = useNavigate()
     const handleClick=() => {
@@ -31,9 +27,7 @@ const Home=()=> {
         <>
        <HeroHome handleClick={handleClick} ></HeroHome>
         <Carousel/>
-        <div>
-
-        </div>
+        
       
         </>
     )
