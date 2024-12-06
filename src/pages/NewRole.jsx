@@ -1,11 +1,11 @@
 import React from "react";
-import NewRoles from "../components/newRole/NewRole";
+import NewRole from "../components/newRole/NewRole"
 
 const NewsRole = () => {
 
     return (
         <div>
-           <NewRoles></NewRoles>
+           <NewRole></NewRole>
         </div>
     );
 }

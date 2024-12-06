@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
-      { path: "/newRole", element: <NewRole /> }, 
+     
       // { path: "/edit-author", element: <EditAutor /> },
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
@@ -58,6 +58,7 @@ const router = createBrowserRouter([
       {path: "/signIn", element: <SignIn/>},
       {path: "/signUpRegister", element: <SignUpRegister/>},
       {path: "/editManga", element: <EditManga/>},
+      {path: "/newRole", element: <NewRole /> }, 
     ]
   }
   
