@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 // import NotFound from "./pages/NotFound";
 import StandarLayout from "./layout/StandarLayout";
-// import AdminPanel from "./pages/AdminPanel";
+import AdminPanel from "./pages/AdminPanel";
 import AuthorProfile from "./pages/AuthorProfile";
 import Manager from "./pages/Manager";
 import Mangas from "./pages/Mangas";
@@ -19,9 +19,9 @@ import EditAuthor from "./pages/EditAuthor";
  import EditChapter from "./pages/EditChapter";
 // import CompanyProfile from "./pages/CompanyProfile";
 import EditCompany from "./pages/EditCompany";
-// import Favourite from "./pages/Favourite";
-import SignIn from "./pages/SignIn";
-import SignUpRegister from "./pages/SignUpRegister";
+import Favourites from "./pages/Favourites";
+import SignIn from "./pages/SignIn";;
+import SignUpRegister from "./pages/SignUpRegister";;
 import StandarLayoutNav from "./layout/StandarLayoutNav";
 import EditManga from "./pages/EditMangaPage";
 import NewMangaForm from "./components/CreateManga/NewManga";
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       { path: "/home", element: <Home /> },
 
       
-      // { path: "/favourite", element: <Favourite /> },
+      { path: "/favourite", element: <Favourites /> },
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editChapter", element: <EditChapter /> },
       // {path: "*", element: <NotFound /> },
-      // {path:"/adminPanel", element: <AdminPanel />},
+      {path:"/adminPanel", element: <AdminPanel />},
       // {path:"/authorFomr", element: <AuthorForm />},
       // {path:"/authorProfile", element: <AuthorProfile />},
       // {path:"/company", element: <Company />},
