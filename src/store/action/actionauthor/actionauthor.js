@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const fetchcategory = createAsyncThunk("home/fetchcategory", async ( ) => {
+const fetchAutorCompany= createAsyncThunk("home/fetchAutorCompany", async ( ) => {
     try {
-        const response = await axios.get(`http://localhost:8080/api/category/all`);
+        const response = await axios.get(`http://localhost:8080/api/manga/mangaAuthorOrCompany`);
         console.log( response.data.response,"Respuesta completa de la API");
         return response.data.response; 
     } catch (error) {
@@ -12,4 +12,4 @@ const fetchcategory = createAsyncThunk("home/fetchcategory", async ( ) => {
     }
 });
 
-export { fetchcategory };
+export { fetchAutorCompany};

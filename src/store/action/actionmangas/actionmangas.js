@@ -3,7 +3,6 @@ import axios from "axios";
 
 const setSearch = createAction("SET_SEARCH");
 
-
 const fetchmangas = createAsyncThunk("mangas/fetchmangas", async (mangas) => {
     try {
         const testSearch = mangas && mangas.search ? mangas.search : "";
