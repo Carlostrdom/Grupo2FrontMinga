@@ -18,7 +18,7 @@ const EditPage = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-50">
-            <div className="flex gap-16">
+            <div className="flex gap-24">
                 <div className="w-72 rounded-lg p-6 text-center bg-white shadow-lg">
                     <h2 className="text-2xl font-semibold text-gray-800 mb-6">Edit Chapter</h2>
 
