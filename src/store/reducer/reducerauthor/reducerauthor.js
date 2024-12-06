@@ -1,25 +1,25 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { fetchcategory } from "../../action/actionhome/actionhome";
+import { fetchAutorCompany } from "../../action/actionauthor/actionauthor";
 
 const initialState = {
-    category: [],  // Inicializamos la propiedad 'category' aquí
+    author: [],  
     loading: true,
     error: false,
 };
 
 const reduxHome = createReducer(initialState, (builder) => {
     builder
-        .addCase(fetchcategory.pending, (state) => {
-            console.log("fetchcategory.pending");
+        .addCase(fetchAutorCompany.pending, (state) => {
+            console.log("fetchAutorCompany.pending");
             
             state.loading = true;
         })
-        .addCase(fetchcategory.fulfilled, (state, action) => {
+        .addCase(fetchAutorCompany.fulfilled, (state, action) => {
             state.loading = false;
-            state.category = action.payload;  
+            state.author = action.payload;  
             
         })
-        .addCase(fetchcategory.rejected, (state,action) => {
+        .addCase(fetchAutorCompany.rejected, (state,action) => {
             state.loading = false;
             state.error = action.payload;
             
