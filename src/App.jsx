@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       { path: "/favourite", element: <Favourites /> },
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
-       { path: "/mangas", element: <Mangas /> },
+      { path: "/mangas", element: <Mangas /> },
       {path: "/newRole", element: <NewRole /> }, 
       
       // { path: "/chapter", element: <Chapter /> },
