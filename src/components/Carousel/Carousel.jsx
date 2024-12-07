@@ -36,7 +36,7 @@ const Carousel = () => {
               <img
                 src={category[currentSlide].cover_photo}
                 alt="Left"
-                className="w-full h-[40vh] object-cover rounded-lg shadow-lg"
+                className="w-full h-[50vh] object-cover rounded-lg shadow-lg"
               />
             )}
           </div>
@@ -47,7 +47,7 @@ const Carousel = () => {
                 <img
                   src={category[currentSlide].character_photo}
                   alt="Center"
-                  className=" flex h-[50vh] w-[20vw] object-cover rounded-lg shadow-xl"
+                  className=" flex h-[60vh] w-[20vw] object-cover rounded-lg shadow-xl"
                 />
               )}
             </div>

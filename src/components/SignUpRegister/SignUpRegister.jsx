@@ -1,15 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import SignInFoto from "../../assets/image/SignInFoto.jpg";
 import imagenHome from "../../assets/image/LOGO_DOS.png";
 import imagenGoogle from "../../assets/image/imagenGoogle.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../store/action/actionsignin/actionsignin";
+import { useEffect } from "react";
+import { createUser } from "../../store/action/actionregister/actionregister";
 function SignUpRegister() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [photo, setPhoto] = useState("");
+
+    const { loading, error, register } = useSelector((state) => state.registerStore);
+    useEffect( ()=> { 
+        if(register.user) {
+          console.log(register,"dasdaasdaw");
+          
+          dispatch(setUser(register));
+          navigate("/home");
+        }
+      },[register])
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        switch (name) {
+          case "email":
+            setEmail(value);
+            break;
+          case "password":
+            setPassword(value);
+            break;
+            case "photo":
+            setPhoto(value);
+          default:
+            break;
+        }
+      };    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createUser({ email, password, photo, online: true, role: 0 }));
+        
+      };
+
     return (
         <div className="flex w-full min-h-screen">
             {/* Formulario */}
             <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50">
-                <form className=" m-6 sd:w-[50] h-[80%] md:w-[60%] ">
+                <form className=" m-6 sd:w-[50] h-[80%] md:w-[60%] "onSubmit={handleSubmit}
+                >
 
                      <div className="text-center mb-6">
                          <img className="mx-auto w-23 h-16" src={imagenHome} alt="Minga Logo" />
@@ -20,14 +60,16 @@ function SignUpRegister() {
                      </div>
                      <div className="space-y-4">
                          <div>
-                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                             <label  className="block text-sm font-medium text-gray-700">
                                  Email
                              </label>
                              <div className="relative mt-1">
                                  <input
-                                     id="email"
                                      type="email"
-                                     placeholder="DragonballZ@Krowl.com"
+                                     name="email"
+                                     value={email}
+                                     onChange={handleChange}
+                                     required
                                      className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                                  />
                                  <svg
@@ -49,15 +91,17 @@ function SignUpRegister() {
                          </div>
                          <div className="mt-4 relative">
                              <label
-                                 htmlFor="password"
+                                 
                                  className="block text-sm font-medium text-gray-700"
                              >
                                  Photo
                              </label>
                              <div className="relative">
                                  <input
-                                     id="password"
-                                     type="password"
+                                    type="text"
+                                    name="photo"
+                                    value={photo}
+                                    onChange={handleChange}
                                      placeholder="Url"
                                      className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                                  />
@@ -85,15 +129,18 @@ function SignUpRegister() {
 
                          <div className="relative mt-4">
                              <label
-                                 htmlFor="password"
+                                 
                                  className="block text-sm font-medium text-gray-700"
                              >
                                  Password
                              </label>
                              <div className="relative">
                                  <input
-                                     id="password"
                                      type="password"
+                                     name="password"
+                                     value={password}
+                                     onChange={handleChange}
+                                     required
                                      placeholder="••••••••"
                                      className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                                  />
@@ -153,8 +200,8 @@ function SignUpRegister() {
                      <div className="mt-6 text-center">
                          <p className="text-sm text-black">
                              Already have an account?{" "}
-                             <Link to="/sign-in" className="text-orange-500 hover:underline">
-                                 Log in
+                             <Link to="/signin" className="text-orange-500 hover:underline">
+                                 Login
                              </Link>
                          </p>
                          <Link to="/" className="text-sm text-black hover:underline mt-2 block">

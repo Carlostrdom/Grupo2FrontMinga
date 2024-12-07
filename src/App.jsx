@@ -31,6 +31,8 @@ import NewCompanyForm from "./components/CreateCompany/NewCompany";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
+import { setUser } from "./store/action/actionsignin/actionsignin";
+import SignRoute from "./components/sininRouter/signinRouter";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,6 @@ const router = createBrowserRouter([
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
-      {path: "/newRole", element: <NewRole /> }, 
       
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
@@ -64,10 +65,10 @@ const router = createBrowserRouter([
     element: <StandarLayoutNav />, 
     children: [    
       {path: "/editChapter", element: <EditChapter /> },
-      {path: "/signIn", element: <SignIn/>},
+      {path: "/signIn", element: <SignRoute><SignIn/></SignRoute> },
       {path: "/signUpRegister", element: <SignUpRegister/>},
       {path: "/editManga", element: <EditManga/>},
-      {path: "/edit-author", element: <EditAuthor /> },
+      {path: "/editAuthor", element: <EditAuthor /> },
       {path: "/editCompany", element: <EditCompany /> },
       {path:"/newManga", element: <NewMangaForm />},
       {path: "/newChapter", element: <NewCahpterForm /> },
