@@ -36,7 +36,7 @@ const CardSuperman = () => {
           style={{ color: categ.shadow, backgroundColor: categ.color }}
           onClick={() => dispatch(setCategory(categ._id))}
           key={index}
-          className="px-4 py-2 rounded-full text-sm font-semibold"
+          className="px-4 py-2 rounded-full text-sm font-semibold "
         >
           {categ.name}
         </button>

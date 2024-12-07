@@ -11,7 +11,7 @@ const createUser = createAsyncThunk("USER_CREATE", async ({ email, password, pho
             password,
             photo,         
             online: true,
-            role: 3,
+            role: 0
         };
 
        

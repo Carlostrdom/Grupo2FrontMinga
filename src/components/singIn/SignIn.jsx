@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LogoDos from '../../assets/image/LOGO_DOS.png';
 import imagenGoogle from '../../assets/image/imagenGoogle.png';
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/action/actionsignin/actionsignin";
 
 function SignInLogin() {
   const [email, setEmail] = useState("");
@@ -114,7 +115,7 @@ function SignInLogin() {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-500">
             You don't have an account?{" "}
-            <Link to="/signup" className="text-orange-500 hover:underline">
+            <Link to="/signUpRegister" className="text-orange-500 hover:underline">
               Sign up
             </Link>
           </p>
