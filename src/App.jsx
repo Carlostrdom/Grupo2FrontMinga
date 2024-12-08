@@ -32,7 +32,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import { setUser } from "./store/action/actionsignin/actionsignin";
-import SignRoute from "./components/sininRouter/signinRouter";
+import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
+
 
 const router = createBrowserRouter([
   {
@@ -41,13 +42,12 @@ const router = createBrowserRouter([
 
     children: [
       { path: "/", element: <Home /> },
-      { path: "/home", element: <Home /> },
-
-      
+      { path: "/home", element: <Home /> },      
       { path: "/favourite", element: <Favourites /> },
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
        { path: "/mangas", element: <Mangas /> },
+       
       
       // { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
@@ -70,11 +70,12 @@ const router = createBrowserRouter([
       {path: "/editManga", element: <EditManga/>},
       {path: "/editAuthor", element: <EditAuthor /> },
       {path: "/editCompany", element: <EditCompany /> },
-      {path:"/newManga", element: <NewMangaForm />},
+      {path:"/newManga", element: <AuthRoute>    <NewMangaForm /> </AuthRoute>},
       {path: "/newChapter", element: <NewCahpterForm /> },
       {path: "/newAuthor", element: <NewAuthorForm /> },
       {path: "/newCompany", element: <NewCompanyForm /> },
       {path: "/newRole", element: <NewRole /> }, 
+      // { path: "/manga", element: <NoLoginRoute><MangaPage /></NoLoginRoute>  },
     ]
   }
   
