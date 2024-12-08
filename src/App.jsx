@@ -34,6 +34,7 @@ import axios from "axios";
 import { setUser } from "./store/action/actionsignin/actionsignin";
 import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
 
+import ChapterRead from "./pages/Chapter";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
       {path: "/newAuthor", element: <NewAuthorForm /> },
       {path: "/newCompany", element: <NewCompanyForm /> },
       {path: "/newRole", element: <NewRole /> }, 
+      {path: "/chapterRead", element: <ChapterRead /> },
       // { path: "/manga", element: <NoLoginRoute><MangaPage /></NoLoginRoute>  },
     ]
   }
