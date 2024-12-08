@@ -1,37 +1,75 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Nav.css";
 import logo from "../../assets/image/logotex.png";
 import { logout } from "../../store/action/actionsignin/actionsignin";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const routes = [
-  { to: "/home", text: "Home", requireAuth: false, unrequireAuth: false },
-  { to: "/mangas", text: "Mangas", requireAuth: false, unrequireAuth: false },
-  { to: "/chapter", text: "Chapter", requireAuth: true, unrequireAuth: false },  
-  { to: "/signIn", text: "Sign In", requireAuth: false, unrequireAuth: true },
-  { to: "/newRole", text: "New Role", requireAuth: true, unrequireAuth: false },
-  { to:  "/fovourite", text: "Fovourite", requireAuth: false, unrequireAuth: true },
-  { to: "/authorprofile", text: "Author Profile", requireAuth: false, unrequireAuth: true },
-  { to: " /newAuthor", text: "New Author", requireAuth: false, unrequireAuth: true },
-  { to : "/newCompany", text: "New Company", requireAuth: false, unrequireAuth: true },
-  { to: "/manager" , text: "Manager", requireAuth: false, unrequireAuth: true },
-  { to: "/newManga", text: "New Manga", requireAuth: false, unrequireAuth: true },
-  { to: "/newChapter", text: "New Chapter", requireAuth: false, unrequireAuth: true },
-  { to: "/editManga", text: "Edit Manga", requireAuth: false, unrequireAuth: true },
-  { to: "/editChapter", text: "Edit Chapter", requireAuth: false, unrequireAuth: true },
-  { to: "/adminPanel", text: "Admin Panel", requireAuth: false, unrequireAuth: true },
-  { to: "/signUpRegister", text: "Sign Up", requireAuth: false, unrequireAuth: true },
-];
+// const routes = [
+  
+//   { to: "/", text: "Home", requireAuth: false, unrequireAuth: false },
+//   { to: "/home", text: "Home", requireAuth: false, unrequireAuth: false },
+//   { to: "/mangas", text: "Mangas", requireAuth: false, unrequireAuth: false },
+//   { to: "/signIn", text: "Sign In", requireAuth: false, unrequireAuth: true },
+//   { to: "/signUpRegister", text: "Sign Up", requireAuth: false, unrequireAuth: true },
+//   { to: "/chapter", text: "Chapter", requireAuth: true, unrequireAuth: false },  
+//   { to: "/newRole", text: "New Role", requireAuth:true, unrequireAuth: false },
+//   { to: "/fovourite", text: "Fovourite", requireAuth: true, unrequireAuth: true },
+//   { to: "/authorprofile", text: "Author Profile", requireAuth: true, unrequireAuth: true },
+//   { to: " /newAuthor", text: "New Author", requireAuth: true, unrequireAuth: true },
+//   { to: "/newCompany", text: "New Company", requireAuth: true, unrequireAuth: true },
+//   { to: "/manager" , text: "Manager", requireAuth: true, unrequireAuth: true },
+//   { to: "/newManga", text: "New Manga", requireAuth: true, unrequireAuth: true },
+//   { to: "/newChapter", text: "New Chapter", requireAuth: true, unrequireAuth: true },
+//   { to: "/editManga", text: "Edit Manga", requireAuth: true, unrequireAuth: true },
+//   { to: "/editChapter", text: "Edit Chapter", requireAuth: true, unrequireAuth: true },
+//   { to: "/adminPanel", text: "Admin Panel", requireAuth: true, unrequireAuth: true },
+// ];
+const rolePermissions = {
+  noLoggin:[{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},{ to: "/signIn", text: "Sign In"},{ to: "/signUpRegister", text: "Sign Up"}],
+  // User
+  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"}], 
+  // Author
+  1: [
+    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
+    
+  ], 
+// Company
+  2: [
+    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
 
+  ], 
+  // Admin
+  3: [
+    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"},
+    { to: "/adminPanel", text: "Admin Panel"},
+  ], 
+};
 const NavBar = () => {
-  const token = useSelector((state) => state.signinStore.token);
-  const user = useSelector((state) => state.signinStore.user);
+  const { user = null, token = null, role } = useSelector((state) => state.signinStore || {});
 
+
+  console.log(role,"role de nav bar");
+  
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  // Rol del usuario (asume que `user?.role` contiene el rol como número)
+  const userRole = user?.role || null;
+  console.log(userRole, "userRole ese es el rol");
+  
+
+  // Filtrar rutas según rol y autenticación
+  // const filteredRoutes = routes.filter(({ to, requireAuth, unrequireAuth }) => {
+  //   // Validar si el usuario tiene acceso según su rol
+  //   const allowedRoutes = rolePermissions[userRole] || [];
+  //   const hasAccess = allowedRoutes.includes(to);
+
+  //   // Validar autenticación
+  //   return (!requireAuth || token) && (!unrequireAuth || !token) && hasAccess;
+  // });
 
   return (
     <header className="header">
@@ -54,28 +92,36 @@ const NavBar = () => {
               />
             </svg>
           </button>
-          
+
           {/* Menú desplegable horizontal */}
-          <nav className={`menu ${menuOpen ? "open" : "closed"}`}>
+          <nav className={`menu ${menuOpen ? "open" : "closed"} h-10 text-center text-white`}>
             <ul className="menu-list">
-            {routes
-            .filter(
-              ({ requireAuth, unrequireAuth }) =>
-                (!requireAuth || token) && (!unrequireAuth || !token)
-            )
-            .map(({ to, text }) => (
-              <li key={to}>
-                <Link to={to} className="hover:underline text-center">
-                  {text}
+           
+              {role == null ? rolePermissions.noLoggin.map((route,index) => (
+                <li key={route.to + index}>
+                <Link to={route.to} className="hover:underline text-center text-white">
+                  {route.text}
                 </Link>
-              </li>
+              </li>                 
+              )
+            ) : rolePermissions[role].map((route,index) => (
+              <li key={route.to + index}>
+                <Link to={route.to} className="hover:underline text-center text-white">
+                  {route.text}
+                </Link>
+              </li> 
             ))}
             </ul>
           </nav>
         </div>
         {token && (
-            <button className="hover:underline bg-orange-600 text-white text-center items-center" onClick={() => dispatch(logout())}>Sign Out</button>
-          )}
+          <button
+            className="hover:underline bg-orange-600 text-white text-center items-center"
+            onClick={() => dispatch(logout())}
+          >
+            Sign Out
+          </button>
+        )}
         {/* Logo */}
         <div className="contentLogo">
           <img className="Logo" src={logo} alt="Logo" />

@@ -29,4 +29,30 @@ const login = createAsyncThunk("login", async({email,password}) => {
 }) 
 
 
-export {login,setUser,logout};
+const createAuthor = createAsyncThunk("AUTHOR_CREATE", async ({ name, last_name, city, date, photo,user_id }) => {
+    
+       try {
+        const author = {
+            name,
+            last_name,
+            city,            
+            date,
+            photo,
+            user_id
+        };
+        console.log(author,"author ya sabes");
+        
+        const response = await axios.post("http://localhost:8080/api/author/create", author);
+        return response.data;
+        
+       } catch (error) {
+        console.error("Error en la creación del usuario:", error.response || error.message);
+        return rejectWithValue(error.response ? error.response.data : error.message)
+       }
+    
+
+        }
+    )
+
+
+export {login,setUser,logout,createAuthor};
