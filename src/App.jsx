@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // import axios from "axios";
 
 import Home from "./pages/Home";
-// import NotFound from "./pages/NotFound";
 import StandarLayout from "./layout/StandarLayout";
 import AdminPanel from "./pages/AdminPanel";
 import AuthorProfile from "./pages/AuthorProfile";
@@ -49,18 +48,10 @@ const router = createBrowserRouter([
       { path: "/favourite", element: <Favourites /> },
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
-       { path: "/mangas", element: <Mangas /> },
-       
-      
-      { path: "/chapter", element: <Chapter /> },
-      // { path: "/chapterForm", element: <ChapterForm /> },
-      // { path: "/editChapter", element: <EditChapter /> },
-      // {path: "*", element: <NotFound /> },
+      { path: "/mangas", element: <Mangas /> },
       {path:"/adminPanel", element: <AdminPanel />},
-      // {path:"/authorFomr", element: <AuthorForm />},
-      // {path:"/authorProfile", element: <AuthorProfile />},
       // {path:"/company", element: <Company />},
-      // {path:"/companyProfile", element: <CompanyProfile />},
+      // {path:"/Author", element: <Author />},
 
     ],
   },
@@ -78,7 +69,7 @@ const router = createBrowserRouter([
       {path: "/newAuthor", element: <NewAuthorForm /> },
       {path: "/newCompany", element: <NewCompanyForm /> },
       {path: "/newRole", element: <NewRole /> }, 
-      {path: "/chapterRead", element: <ChapterRead /> },
+      {path: "/chapter", element: <ChapterRead /> },
       { path: "/manga", element: <MangaPage />  },
     ]
   }, 
