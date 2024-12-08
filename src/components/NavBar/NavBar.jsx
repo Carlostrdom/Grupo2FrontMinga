@@ -28,7 +28,7 @@ import { Link } from "react-router-dom";
 const rolePermissions = {
   noLoggin:[{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},{ to: "/signIn", text: "Sign In"},{ to: "/signUpRegister", text: "Sign Up"}],
   // User
-  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"}], 
+  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"}, {to:"/newRole", text:"new role"}], 
   // Author
   1: [
     { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
