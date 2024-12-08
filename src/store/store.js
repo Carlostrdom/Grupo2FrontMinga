@@ -4,6 +4,7 @@ import reduxCategory from './reducer/reducecategory/reducercategory'
 import reducerSignin from './reducer/reducersignin/reducersignin'
 import reducerRegister from './reducer/reducerregister/reduxregister'
 import newAuthorReducer from './reducer/reducerNewAuthor/reducerNewAuthor'
+import reducerChapter from './reducer/reducerChapter/reducerChapter'
 
 
 const store = configureStore({
@@ -12,7 +13,8 @@ const store = configureStore({
         categoryStore: reduxCategory,
         signinStore: reducerSignin,
         registerStore: reducerRegister,
-        authorNewStore: newAuthorReducer
+        authorNewStore: newAuthorReducer,
+        chapterStore: reducerChapter
     
       
     }

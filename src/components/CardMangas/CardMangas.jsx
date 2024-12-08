@@ -6,6 +6,13 @@ import { useNavigate } from "react-router-dom";
 const CardMangas = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const handlerNavigate = (manga) => {
+    if (isLoggedIn) {
+      navigate("/manga", { state: manga });
+    } else {
+      navigate("/signIn");
+    }
+  };
 
   // Obtener estados desde Redux
   const { mangas, loading, error } = useSelector((state) => state.mangasStore);
@@ -71,9 +78,7 @@ const CardMangas = () => {
                   </div>
                   <button
                     className="text-sm bg-green-100 text-green-600 px-3 py-1 rounded-full self-start"
-                    onClick={() => {
-                      navigate(isLoggedIn ? "/manga" : "/signIn");
-                    }}
+                    onClick={() => handlerNavigate(manga)}
                   >
                     Read
                   </button>

@@ -17,13 +17,11 @@ const initialState = {
             .addCase(fetchcategory.fulfilled, (state, action) => {
                 state.loading = false;
                 state.category = action.payload;
-                console.log(action.payload,"mensaje de la accion");
                 
             })
             .addCase(fetchcategory.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
-                console.log("fallo");
                 
             }).addCase(setCategory, (state, action) => {
                 state.selecCategory = action.payload;

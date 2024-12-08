@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { fetchmangas,  setSearch } from "../../action/actionmangas/actionmangas";
+import { fetchmangas,  selectManga,  setSearch } from "../../action/actionmangas/actionmangas";
 
 const initialState = {
     mangas: [],
     loading: true,
     error: false,
     search: "",
+    selectManga: {}
 };
 
 const reduxMangas = createReducer(initialState, (builder) => {
@@ -17,9 +18,12 @@ const reduxMangas = createReducer(initialState, (builder) => {
     }).addCase(fetchmangas.fulfilled, (state, action) => {
         state.loading = false;
         state.mangas = action.payload;
+        
     }).addCase(fetchmangas.rejected, (state) => {
         state.loading = false;
         state.error = true;
+    }).addCase(selectManga, (state, action) => {
+        state.selectManga = action.payload;
     })
 });
 export default reduxMangas;

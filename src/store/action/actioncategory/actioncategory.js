@@ -6,7 +6,6 @@ const setCategory = createAction("SET_CATEGORY");
 const fetchcategory = createAsyncThunk("category/fetchcategory", async ( ) => {
     try {
         const response = await axios.get(`http://localhost:8080/api/category/all`);
-        console.log( response.data.response,"Respuesta completa de la API");
         return response.data.response;
         
     } catch (error) {

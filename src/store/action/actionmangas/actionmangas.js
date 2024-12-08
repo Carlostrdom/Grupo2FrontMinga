@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const setSearch = createAction("SET_SEARCH");
+const selectManga = createAction("SELECT_MANGA");
 
 const fetchmangas = createAsyncThunk("mangas/fetchmangas", async (mangas) => {
     try {
@@ -23,4 +24,4 @@ const fetchmangas = createAsyncThunk("mangas/fetchmangas", async (mangas) => {
     }
 });
 
-export { setSearch,  fetchmangas };
+export { setSearch,  fetchmangas ,selectManga};

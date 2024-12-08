@@ -28,7 +28,7 @@ import { Link } from "react-router-dom";
 const rolePermissions = {
   noLoggin:[{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},{ to: "/signIn", text: "Sign In"},{ to: "/signUpRegister", text: "Sign Up"}],
   // User
-  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"}], 
+  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},{ to: "/newRole", text: "new role"}], 
   // Author
   1: [
     { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
@@ -60,17 +60,6 @@ const NavBar = () => {
   const userRole = user?.role || null;
   console.log(userRole, "userRole ese es el rol");
   
-
-  // Filtrar rutas según rol y autenticación
-  // const filteredRoutes = routes.filter(({ to, requireAuth, unrequireAuth }) => {
-  //   // Validar si el usuario tiene acceso según su rol
-  //   const allowedRoutes = rolePermissions[userRole] || [];
-  //   const hasAccess = allowedRoutes.includes(to);
-
-  //   // Validar autenticación
-  //   return (!requireAuth || token) && (!unrequireAuth || !token) && hasAccess;
-  // });
-
   return (
     <header className="header">
       <div className="navbar">
