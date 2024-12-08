@@ -33,6 +33,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { setUser } from "./store/action/actionsignin/actionsignin";
 import SignRoute from "./components/sininRouter/signinRouter";
+import ChapterRead from "./pages/Chapter";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
       {path: "/newAuthor", element: <NewAuthorForm /> },
       {path: "/newCompany", element: <NewCompanyForm /> },
       {path: "/newRole", element: <NewRole /> }, 
+      {path: "/chapterRead", element: <ChapterRead /> },
     ]
   }
   
