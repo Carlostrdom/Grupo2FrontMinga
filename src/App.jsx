@@ -12,7 +12,7 @@ import Manager from "./pages/Manager";
 import Mangas from "./pages/Mangas";
 import NewRole from "./pages/NewRole";
 import EditAuthor from "./pages/EditAuthor";
-// import Chapter from "./pages/Chapter";
+import Chapter from "./pages/Chapter";
 // import ChapterForm from "./pages/ChapterForm";
 // import EditChapter from "./pages/EditChapter";
 // import EditChapter from "./pages/EditChapter";
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
        { path: "/mangas", element: <Mangas /> },
        
       
-      // { path: "/chapter", element: <Chapter /> },
+      { path: "/chapter", element: <Chapter /> },
       // { path: "/chapterForm", element: <ChapterForm /> },
       // { path: "/editChapter", element: <EditChapter /> },
       // {path: "*", element: <NotFound /> },
