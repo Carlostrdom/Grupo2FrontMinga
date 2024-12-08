@@ -10,7 +10,6 @@ const initialState = {
 const reduxHome = createReducer(initialState, (builder) => {
     builder
         .addCase(fetchAutorCompany.pending, (state) => {
-            console.log("fetchAutorCompany.pending");
             
             state.loading = true;
         })

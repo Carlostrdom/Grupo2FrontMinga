@@ -1,33 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imagenCarouselDerec from "../../assets/image/imagenCarouselDerec.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import  fetchchapter from "../../store/action/actionchapter/actionchapter";
 
 const Manga = () => {
+ const location = useLocation();
+ const {chapter, loading, error } = useSelector((state) => state.chapterStore);
+const dispatch = useDispatch();
+
+ const selectedManga = location.state;
+ useEffect(() => {
+  if (selectedManga) {
+    dispatch(fetchchapter(selectedManga._id));
+  }
+ },[dispatch, selectedManga?._id]);
+
+ if (loading) {
+  return <p>Cargando itinerarios...</p>;
+}
+
+if (error) {
+  return <p className="text-red-500">Error: {error}</p>;
+}
+  // Manejo de pestañas y paginación
   const [activeTab, setActiveTab] = useState("manga");
   const [currentPage, setCurrentPage] = useState(1);
   const chaptersPerPage = 3;
 
-  const chapters = [
-    { number: 1, pages: 169, image: "https://via.placeholder.com/50x50" },
-    { number: 2, pages: 403, image: "https://via.placeholder.com/50x50" },
-    { number: 3, pages: 78, image: "https://via.placeholder.com/50x50" },
-    { number: 4, pages: 201, image: "https://via.placeholder.com/50x50" },
-    { number: 5, pages: 50, image: "https://via.placeholder.com/50x50" },
-    { number: 6, pages: 120, image: "https://via.placeholder.com/50x50" },
-  ];
+  if (!selectedManga) {
+    return <p>Loading manga details...</p>;
+  }
+
 
   const startIndex = (currentPage - 1) * chaptersPerPage;
   const endIndex = startIndex + chaptersPerPage;
-  const currentChapters = chapters.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(chapters.length / chaptersPerPage);
+  const currentChapters = Array.isArray(chapter)
+  ? chapter.slice(startIndex, endIndex)
+  : [];
+  const totalPages = Math.ceil(chapter.length / chaptersPerPage);
 
   const renderTabContent = () => {
     if (activeTab === "manga") {
       return (
         <div className="mt-4 text-gray-700 text-sm">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis
-            ligula at quam pulvinar accumsan et eu ex.
-          </p>
+          <p>{selectedManga.description}</p>
         </div>
       );
     }
@@ -104,7 +121,7 @@ const Manga = () => {
       <div className="w-full md:w-1/2 h-[50vh] md:h-screen flex-shrink-0">
         <img
           src={imagenCarouselDerec}
-          alt="Manga cover"
+          alt={`${title} cover`}
           className="w-full h-full object-cover"
         />
       </div>
@@ -114,26 +131,14 @@ const Manga = () => {
         {/* Título */}
         <div className="text-center w-full mt-10 md:mt-20">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Naruto: And That's Why You're Disqualified!! #8
+            {title}
           </h1>
           <div className="flex justify-center items-center space-x-2 mt-2">
             <span className="text-red-500 text-xs md:text-sm font-bold bg-red-100 px-2 py-1 rounded-full">
-              Shōnen
+              {genre}
             </span>
-            <p className="text-xs md:text-sm text-gray-600">Company Name</p>
+            <p className="text-xs md:text-sm text-gray-600">{company}</p>
           </div>
-        </div>
-
-        {/* Reacciones */}
-        <div className="grid grid-cols-4 gap-3">
-          {["👍", "👎", "😊", "❤️"].map((reaction, index) => (
-            <div
-              key={index}
-              className="w-12 h-12 md:w-14 md:h-14 bg-gray-100 rounded-full flex items-center justify-center shadow-md"
-            >
-              <span className="text-lg md:text-xl">{reaction}</span>
-            </div>
-          ))}
         </div>
 
         {/* Stats */}
@@ -141,19 +146,19 @@ const Manga = () => {
           <div className="flex justify-between text-xs md:text-sm">
             <div>
               <h3 className="text-sm md:text-base font-bold text-gray-800">
-                4.5/5
+                {rating}/5
               </h3>
               <p className="text-xs md:text-sm text-gray-500">Rating</p>
             </div>
             <div>
               <h3 className="text-sm md:text-base font-bold text-gray-800">
-                265
+                {chapters.length}
               </h3>
               <p className="text-xs md:text-sm text-gray-500">Chapters</p>
             </div>
             <div>
               <h3 className="text-sm md:text-base font-bold text-gray-800">
-                Eng
+                {language}
               </h3>
               <p className="text-xs md:text-sm text-gray-500">Language</p>
             </div>
