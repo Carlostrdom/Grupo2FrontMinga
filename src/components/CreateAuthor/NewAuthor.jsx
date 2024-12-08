@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  createAuthor,
-  setUser,
-} from "../../store/action/actionsignin/actionsignin";
+import {createAuthor,setUser} from "../../store/action/actionsignin/actionsignin";
 
 const NewAuthorForm = () => {
   const { user, token } = useSelector((state) => state.signinStore);
@@ -25,7 +22,7 @@ const NewAuthorForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user.user._id, "user._id que esta en newAuthor");
-    setIsSubmitting(true); // Bloquea el botón
+    setIsSubmitting(true); 
 
     try {
 
