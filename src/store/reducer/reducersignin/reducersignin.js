@@ -1,11 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { login, setUser,logout } from "../../action/actionsignin/actionsignin";
+import { login, setUser,logout, createAuthor } from "../../action/actionsignin/actionsignin";
 
 const initialState = {  
     loading: false,
     error: false,
     user: null,
-    token: null
+    token: null,
+    role: null,
+    author: [],
+
 };
 
  const reducerSignin = createReducer(initialState,(builder) => {
@@ -15,6 +18,7 @@ const initialState = {
         state.user = action.payload.user;
         state.token = action.payload.token
         localStorage.setItem("token", action.payload.token);
+        state.role = action.payload.user.role
 
     })
     .addCase(login.pending,(state,action)=>{     
@@ -32,8 +36,11 @@ const initialState = {
         state.token = null
     })
 
-    .addCase(setUser,(state,action)=>{      
+    .addCase(setUser,(state,action)=>{    
+        console.log("setUser",action.payload.user.user.role);
+          
         state.user = action.payload.user,
+        state.role = action.payload.user.user.role,
         state.token = action.payload.token || localStorage.getItem("token") 
         action.payload.token && localStorage.setItem("token", action.payload.token);
     })
@@ -42,6 +49,21 @@ const initialState = {
         localStorage.removeItem("token");
         state.user = null,
         state.token = null
+        state.role = null
+    }).addCase(createAuthor.fulfilled,(state,action)=>{
+        state.role = 1
+        state.author = action.payload;
+        state.loading = false;
+        state.error = false;       
+        
+    }).addCase(createAuthor.pending,(state,action)=>{
+        state.loading = true;
+        state.error = false;
+        state.author = [];
+    }).addCase(createAuthor.rejected,(state,action)=>{
+        state.loading = false;
+        state.error = true;
+        state.author = [];
     })
 
 })
