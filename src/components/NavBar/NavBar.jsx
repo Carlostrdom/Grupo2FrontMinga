@@ -1,135 +1,155 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Nav.css";
+import { Link } from "react-router-dom";
 import logo from "../../assets/image/logotex.png";
 import { logout } from "../../store/action/actionsignin/actionsignin";
-import { Link } from "react-router-dom";
 
-// const routes = [
-  
-//   { to: "/", text: "Home", requireAuth: false, unrequireAuth: false },
-//   { to: "/home", text: "Home", requireAuth: false, unrequireAuth: false },
-//   { to: "/mangas", text: "Mangas", requireAuth: false, unrequireAuth: false },
-//   { to: "/signIn", text: "Sign In", requireAuth: false, unrequireAuth: true },
-//   { to: "/signUpRegister", text: "Sign Up", requireAuth: false, unrequireAuth: true },
-//   { to: "/chapter", text: "Chapter", requireAuth: true, unrequireAuth: false },  
-//   { to: "/newRole", text: "New Role", requireAuth:true, unrequireAuth: false },
-//   { to: "/fovourite", text: "Fovourite", requireAuth: true, unrequireAuth: true },
-//   { to: "/authorprofile", text: "Author Profile", requireAuth: true, unrequireAuth: true },
-//   { to: " /newAuthor", text: "New Author", requireAuth: true, unrequireAuth: true },
-//   { to: "/newCompany", text: "New Company", requireAuth: true, unrequireAuth: true },
-//   { to: "/manager" , text: "Manager", requireAuth: true, unrequireAuth: true },
-//   { to: "/newManga", text: "New Manga", requireAuth: true, unrequireAuth: true },
-//   { to: "/newChapter", text: "New Chapter", requireAuth: true, unrequireAuth: true },
-//   { to: "/editManga", text: "Edit Manga", requireAuth: true, unrequireAuth: true },
-//   { to: "/editChapter", text: "Edit Chapter", requireAuth: true, unrequireAuth: true },
-//   { to: "/adminPanel", text: "Admin Panel", requireAuth: true, unrequireAuth: true },
-// ];
 const rolePermissions = {
-  noLoggin:[{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},{ to: "/signIn", text: "Sign In"},{ to: "/signUpRegister", text: "Sign Up"}],
-  // User
-  0: [{ to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"}], 
-  // Author
+  noLoggin: [
+    { to: "/", text: "Home" },
+    { to: "/mangas", text: "Mangas" },
+    { to: "/signIn", text: "Sign In" },
+    { to: "/signUpRegister", text: "Sign Up" },
+  ],
+  0: [
+    { to: "/", text: "Home" },
+    { to: "/mangas", text: "Mangas" },
+    { to: "/manga", text: "Manga" },
+    {to: "/newRole", text: "mew role"}
+  ],
   1: [
-    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
-    
-  ], 
-// Company
+    { to: "/", text: "Home" },
+    { to: "/mangas", text: "Mangas" },
+    { to: "/manga", text: "Manga" },
+    { to: "/authorprofile", text: "Author Profile" },
+    { to: "/manager", text: "Manager" },
+  ],
   2: [
-    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"}
-
-  ], 
-  // Admin
+    { to: "/", text: "Home" },
+    { to: "/mangas", text: "Mangas" },
+    { to: "/manga", text: "Manga" },
+    { to: "/authorprofile", text: "Author Profile" },
+    { to: "/manager", text: "Manager" },
+  ],
   3: [
-    { to: "/", text: "Home"},{ to: "/mangas", text: "Mangas"},  { to: "/manga", text: "Manga"},{ to: "/authorprofile", text: "Author Profile"}, { to: "/manager" , text: "Manager"},
-    { to: "/adminPanel", text: "Admin Panel"},
-  ], 
+    { to: "/", text: "Home" },
+    { to: "/mangas", text: "Mangas" },
+    { to: "/manga", text: "Manga" },
+    { to: "/authorprofile", text: "Author Profile" },
+    { to: "/manager", text: "Manager" },
+    { to: "/adminPanel", text: "Admin Panel" },
+  ],
 };
+
 const NavBar = () => {
-  const { user = null, token = null, role } = useSelector((state) => state.signinStore || {});
-
-
-  console.log(role,"role de nav bar");
-  
+  const { user = null, token = null, role } = useSelector(
+    (state) => state.signinStore || {}
+  );
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  // Rol del usuario (asume que `user?.role` contiene el rol como número)
-  const userRole = user?.role || null;
-  console.log(userRole, "userRole ese es el rol");
-  
-
-  // Filtrar rutas según rol y autenticación
-  // const filteredRoutes = routes.filter(({ to, requireAuth, unrequireAuth }) => {
-  //   // Validar si el usuario tiene acceso según su rol
-  //   const allowedRoutes = rolePermissions[userRole] || [];
-  //   const hasAccess = allowedRoutes.includes(to);
-
-  //   // Validar autenticación
-  //   return (!requireAuth || token) && (!unrequireAuth || !token) && hasAccess;
-  // });
+  const defaultPhoto =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWUhlsFN5Mtzlxg8ZRtInt1GyjRKF9Io0a9A&s";
+ 
 
   return (
-    <header className="header">
-      <div className="navbar">
-        {/* Botón del menú hamburguesa */}
-        <div className="menu-container">
-          <button className="btn-hamburg" onClick={toggleMenu}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="#F97316"
-              className="MenuHamburg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
-
-          {/* Menú desplegable horizontal */}
-          <nav className={`menu ${menuOpen ? "open" : "closed"} h-10 text-center text-white`}>
-            <ul className="menu-list">
-           
-              {role == null ? rolePermissions.noLoggin.map((route,index) => (
-                <li key={route.to + index}>
-                <Link to={route.to} className="hover:underline text-center text-white">
-                  {route.text}
-                </Link>
-              </li>                 
-              )
-            ) : rolePermissions[role].map((route,index) => (
-              <li key={route.to + index}>
-                <Link to={route.to} className="hover:underline text-center text-white">
-                  {route.text}
-                </Link>
-              </li> 
-            ))}
-            </ul>
-          </nav>
-        </div>
-        {token && (
-          <button
-            className="hover:underline bg-orange-600 text-white text-center items-center"
-            onClick={() => dispatch(logout())}
+    <header className="relative">
+      <div className="flex items-center justify-between bg-orange-500 text-white p-4">
+ 
+        <button
+          className="p-2 rounded focus:outline-none focus:ring focus:ring-white"
+          onClick={toggleMenu}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 text-white"
           >
-            Sign Out
-          </button>
-        )}
-        {/* Logo */}
-        <div className="contentLogo">
-          <img className="Logo" src={logo} alt="Logo" />
-          <p className="imagenLogo">雪</p>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+
+
+        <div className="flex items-center">
+          <img className="w-10 h-10" src={logo} alt="Logo" />
+          <p className="text-xl font-bold ml-2">雪</p>
         </div>
+
+
+        {token && (
+          <img
+            src={user.photo ? user.photo : user.user.photo || defaultPhoto} 
+            alt="User Avatar"
+            className="w-10 h-10 rounded-full border-2 border-white"
+          />
+        )}
       </div>
+      {menuOpen && (
+        <nav className="fixed top-0 left-0 w-64 h-full bg-orange-500 text-white flex flex-col p-6 z-50">
+          {token && (
+            <div className="flex flex-col items-center gap-2 mb-6">
+              <img
+                src={user.photo ? user.photo : user.user.photo || defaultPhoto} 
+                alt="User Avatar"
+                className="w-16 h-16 rounded-full border-2 border-white"
+              />            
+              <p className="text-sm hidden sm:block">{user.email}</p>
+            </div>
+          )}
+          <ul className="flex flex-col gap-4 text-center">
+            {role == null
+              ? rolePermissions.noLoggin.map((route, index) => (
+                  <li key={route.to + index}>
+                    <Link
+                      to={route.to}
+                      className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
+                    >
+                      {route.text}
+                    </Link>
+                  </li>
+                ))
+              : rolePermissions[role].map((route, index) => (
+                  <li key={route.to + index}>
+                    <Link
+                      to={route.to}
+                      className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
+                    >
+                      {route.text}
+                    </Link>
+                  </li>
+                ))}
+          </ul>
+          {token && (
+            <button
+              onClick={() => {
+                dispatch(logout());
+                toggleMenu(); 
+              }}
+              className="mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded w-full"
+            >
+              Logout
+            </button>
+          )}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-4 right-4 text-white text-2xl font-bold"
+          >
+            x
+          </button>
+        </nav>
+      )}
     </header>
   );
 };
 
 export default NavBar;
+

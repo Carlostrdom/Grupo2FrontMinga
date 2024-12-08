@@ -1,20 +1,23 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const NewCompanyForm = () => {
-    const [nameCompany, setNameCompany] = useState("");
+    const {company, loading, error } = useSelector((state) => state.companyNewStore)
+    const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [website, setWebsite] = useState("");
-    const [profileImage, setProfileImage] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [active, setActive] = useState("");
+    const [user_id, setUser_id] = useState("");
 
     const handleSubmit = () => {
-        console.log("Chapter submitted:", { nameCompany, description, website, profileImage });
+        console.log("Chapter submitted:", { name, description, website, photo, active, user_id });
         alert("Chapter submitted successfully!");
     };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white w-11/12 sm:w-96 lg:w-1/3 text-gray-800 rounded-lg shadow-lg p-6">
-                {/* Header */}
                 <h1 className="text-center text-2xl font-bold mb-6">New Company</h1>
                 <div className="flex justify-center mb-6">
                     <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center">
@@ -25,13 +28,11 @@ const NewCompanyForm = () => {
                         />
                     </div>
                 </div>
-
-                {/* Input Fields */}
                 <div className="space-y-4">
                     <input
                         type="text"
                         value={nameCompany}
-                        onChange={(e) => setNameCompany(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                         placeholder="Name Company"
                         className="w-full border-b border-gray-400 focus:outline-none focus:border-gray-600 text-sm py-2"
                     />
@@ -45,7 +46,7 @@ const NewCompanyForm = () => {
                     <input
                         type="text"
                         value={profileImage}
-                        onChange={(e) => setProfileImage(e.target.value)}
+                        onChange={(e) => setPhoto(e.target.value)}
                         placeholder="URL Profile Image"
                         className="w-full border-b border-gray-400 focus:outline-none focus:border-gray-600 text-sm py-2"
                     />
@@ -57,8 +58,6 @@ const NewCompanyForm = () => {
                         rows="3"
                     ></textarea>
                 </div>
-
-                {/* Submit Button */}
                 <div className="mt-6 flex justify-center">
                     <button
                         onClick={handleSubmit}
