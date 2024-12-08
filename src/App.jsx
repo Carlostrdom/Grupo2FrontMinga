@@ -35,6 +35,8 @@ import { setUser } from "./store/action/actionsignin/actionsignin";
 import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
 
 import ChapterRead from "./pages/Chapter";
+import MangaPage from "./pages/Manga";
+import NotFound from "./components/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -77,9 +79,10 @@ const router = createBrowserRouter([
       {path: "/newCompany", element: <NewCompanyForm /> },
       {path: "/newRole", element: <NewRole /> }, 
       {path: "/chapterRead", element: <ChapterRead /> },
-      // { path: "/manga", element: <NoLoginRoute><MangaPage /></NoLoginRoute>  },
+      { path: "/manga", element: <MangaPage />  },
     ]
-  }
+  }, 
+    {path: "*", element: <NotFound /> },
   
 
 
