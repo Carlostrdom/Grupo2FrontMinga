@@ -56,10 +56,10 @@ const NavBar = () => {
 
   return (
     <header className="relative">
-      <div className="flex items-center justify-between bg-orange-500 text-white p-4">
-
+      <div className="flex items-center justify-between absolute z-50 text-orange-500 p-4 w-full">
+        <div>
         <button
-          className="p-2 rounded focus:outline-none focus:ring focus:ring-white"
+          className="p-2 rounded focus:outline-none focus:ring focus:ring-orange-500"
           onClick={toggleMenu}
         >
           <svg
@@ -68,7 +68,7 @@ const NavBar = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-orange-500"
           >
             <path
               strokeLinecap="round"
@@ -78,15 +78,11 @@ const NavBar = () => {
           </svg>
         </button>
 
-
+        </div>
         <div className="flex items-center">
-          <img className="w-10 h-10" src={logo} alt="Logo" />
-          <p className="text-3xl font-bold mr-5">Minga</p>
+          <img className="w-25 h-10" src={logo} alt="Logo" />
           <p className="text-3xl font-bold ml-2 mr-10">雪</p>
         </div>
-
-
-        
       </div>
       {menuOpen && (
         <nav className="fixed top-0 left-0 w-64 h-full bg-orange-500 text-white flex flex-col p-6 z-50">
