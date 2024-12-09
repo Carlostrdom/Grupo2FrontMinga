@@ -15,7 +15,7 @@ const rolePermissions = {
     { to: "/", text: "Home" },
     { to: "/mangas", text: "Mangas" },
     { to: "/manga", text: "Manga" },
-    {to: "/newRole", text: "mew role"}
+    { to: "/newRole", text: "New role" }
   ],
   1: [
     { to: "/", text: "Home" },
@@ -52,12 +52,12 @@ const NavBar = () => {
 
   const defaultPhoto =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWUhlsFN5Mtzlxg8ZRtInt1GyjRKF9Io0a9A&s";
- 
+
 
   return (
     <header className="relative">
       <div className="flex items-center justify-between bg-orange-500 text-white p-4">
- 
+
         <button
           className="p-2 rounded focus:outline-none focus:ring focus:ring-white"
           onClick={toggleMenu}
@@ -81,58 +81,53 @@ const NavBar = () => {
 
         <div className="flex items-center">
           <img className="w-10 h-10" src={logo} alt="Logo" />
-          <p className="text-xl font-bold ml-2">雪</p>
+          <p className="text-3xl font-bold mr-5">Minga</p>
+          <p className="text-3xl font-bold ml-2 mr-10">雪</p>
         </div>
 
 
-        {token && (
-          <img
-            src={user.photo ? user.photo : user.user.photo || defaultPhoto} 
-            alt="User Avatar"
-            className="w-10 h-10 rounded-full border-2 border-white"
-          />
-        )}
+        
       </div>
       {menuOpen && (
         <nav className="fixed top-0 left-0 w-64 h-full bg-orange-500 text-white flex flex-col p-6 z-50">
           {token && (
             <div className="flex flex-col items-center gap-2 mb-6">
               <img
-                src={user.photo ? user.photo : user.user.photo || defaultPhoto} 
+                src={user.photo ? user.photo : user.user.photo || defaultPhoto}
                 alt="User Avatar"
                 className="w-16 h-16 rounded-full border-2 border-white"
-              />            
+              />
               <p className="text-sm hidden sm:block">{user.email}</p>
             </div>
           )}
           <ul className="flex flex-col gap-4 text-center">
             {role == null
               ? rolePermissions.noLoggin.map((route, index) => (
-                  <li key={route.to + index}>
-                    <Link
-                      to={route.to}
-                      className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
-                    >
-                      {route.text}
-                    </Link>
-                  </li>
-                ))
+                <li key={route.to + index}>
+                  <Link
+                    to={route.to}
+                    className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
+                  >
+                    {route.text}
+                  </Link>
+                </li>
+              ))
               : rolePermissions[role].map((route, index) => (
-                  <li key={route.to + index}>
-                    <Link
-                      to={route.to}
-                      className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
-                    >
-                      {route.text}
-                    </Link>
-                  </li>
-                ))}
+                <li key={route.to + index}>
+                  <Link
+                    to={route.to}
+                    className="text-lg hover:text-orange-700 transition-colors  hover:bg-white py-2 px-4 rounded w-full"
+                  >
+                    {route.text}
+                  </Link>
+                </li>
+              ))}
           </ul>
           {token && (
             <button
               onClick={() => {
                 dispatch(logout());
-                toggleMenu(); 
+                toggleMenu();
               }}
               className="mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded w-full"
             >
