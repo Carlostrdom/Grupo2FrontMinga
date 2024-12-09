@@ -1,16 +1,16 @@
 import {  createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const fetchchapter = createAsyncThunk("chapter/fetchchapter",async (_id, { rejectWithValue }) => {
-try {
-    const response = await axios.get(`http://localhost:8080/api/chapter/chapterId/${_id}`);
-    console.log(response.data.response, "response.data.response chapter");
-    
-    return response.data.response;
-} catch (error) {
-    console.error("Error fetching itineraries:", error);
-            return rejectWithValue(error.response?.data || 'Error fetching itineraries');
-}    
+const fetchchapter = createAsyncThunk("chapter/fetchchapter", async (manga_id, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(`http://localhost:8080/api/chapter/mangaId/${manga_id}`);
+        console.log(response.data, "response.data.response chapter");
+        return response.data.response; // Esto debería ser un array de capítulos
+    } catch (error) {
+        console.error("Error fetching chapters:", error);
+        return rejectWithValue(error.response?.data || 'Error fetching chapters');
+    }
 });
+
 
 export default fetchchapter ;

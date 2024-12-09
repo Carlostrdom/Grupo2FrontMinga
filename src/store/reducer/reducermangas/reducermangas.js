@@ -6,7 +6,7 @@ const initialState = {
     loading: true,
     error: false,
     search: "",
-    selectManga: {}
+    selectedManga: {}
 };
 
 const reduxMangas = createReducer(initialState, (builder) => {
@@ -23,7 +23,7 @@ const reduxMangas = createReducer(initialState, (builder) => {
         state.loading = false;
         state.error = true;
     }).addCase(selectManga, (state, action) => {
-        state.selectManga = action.payload;
+        state.selectedManga = action.payload;
     })
 });
 export default reduxMangas;
