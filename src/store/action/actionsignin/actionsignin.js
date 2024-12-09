@@ -19,11 +19,13 @@ const logout = createAction("logout");
 
 const login = createAsyncThunk("login", async({email,password}) => {
     const credentials = {
-        email:email,
-        password:password
+        email,
+        password
     }
     
     const response = await axios.post("http://localhost:8080/api/auth/signIn",credentials)
+      console.log(response.data,"response.data");
+      
    
     return response.data
 }) 
