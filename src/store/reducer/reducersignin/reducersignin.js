@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { login, setUser,logout, createAuthor } from "../../action/actionsignin/actionsignin";
+import { login, setUser,logout, createAuthor, newCompany } from "../../action/actionsignin/actionsignin";
 
 const initialState = {  
     loading: false,
@@ -8,6 +8,7 @@ const initialState = {
     token: null,
     role: null,
     author: [],
+    company: [],
 
 };
 
@@ -64,6 +65,20 @@ const initialState = {
         state.loading = false;
         state.error = true;
         state.author = [];
+    }).addCase(newCompany.fulfilled,(state,action)=>{
+        state.role = 2
+        state.company = action.payload;
+        state.loading = false;
+        state.error = false;       
+        
+    }).addCase(newCompany.pending,(state,action)=>{
+        state.loading = true;
+        state.error = false;
+        state.company = [];
+    }).addCase(newCompany.rejected,(state,action)=>{
+        state.loading = false;
+        state.error = true;
+        state.company = [];
     })
 
 })
