@@ -20,7 +20,7 @@ const CardSuperman = () => {
     return (
         <div className="relative -mt-12 px-8">
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-[90%] mx-auto relative z-10">
-          <div className="flex flex-wrap gap-4 pt-6 mb-6 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-4 mb-6 justify-center md:justify-start md:ml-44">
   <button
     onClick={() => dispatch(setCategory(null))}
     className="px-4 py-2 rounded-full text-sm font-semibold bg-slate-400 text-white hidden md:block"
