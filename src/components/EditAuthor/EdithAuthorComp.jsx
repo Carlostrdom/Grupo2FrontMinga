@@ -6,11 +6,6 @@ const EdithAuthorComp = () => {
   const [location, setLocation] = useState("");
   const [Date, setDate] = useState("");
   const [photo, setPhoto] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [location, setLocation] = useState("");
-  const [Date, setDate] = useState("");
-  const [photo, setPhoto] = useState("");
 
   const handleSave = () => {
     console.log("Saving author:", {
@@ -23,10 +18,6 @@ const EdithAuthorComp = () => {
     alert("Author details saved!");
   };
 
-  const handleDelete = () => {
-    console.log("Deleting account");
-    alert("Account deleted!");
-  };
   const handleDelete = () => {
     console.log("Deleting account");
     alert("Account deleted!");

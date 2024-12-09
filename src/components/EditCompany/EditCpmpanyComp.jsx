@@ -5,10 +5,6 @@ const EdithCompanyComp = () => {
   const [location, setLocation] = useState("");
   const [website, setWebsite] = useState("");
   const [profileImage, setProfileImage] = useState("");
-  const [nameCompany, setNameCompany] = useState("");
-  const [location, setLocation] = useState("");
-  const [website, setWebsite] = useState("");
-  const [profileImage, setProfileImage] = useState("");
 
   const handleSave = () => {
     console.log("Saving author:", {
@@ -20,10 +16,6 @@ const EdithCompanyComp = () => {
     alert("Author details saved!");
   };
 
-  const handleDelete = () => {
-    console.log("Deleting account");
-    alert("Account deleted!");
-  };
   const handleDelete = () => {
     console.log("Deleting account");
     alert("Account deleted!");
