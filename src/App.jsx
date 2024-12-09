@@ -11,7 +11,7 @@ import Manager from "./pages/Manager";
 import Mangas from "./pages/Mangas";
 import NewRole from "./pages/NewRole";
 import EditAuthor from "./pages/EditAuthor";
-import Chapter from "./pages/Chapter";
+
 // import ChapterForm from "./pages/ChapterForm";
 // import EditChapter from "./pages/EditChapter";
 // import EditChapter from "./pages/EditChapter";
@@ -32,7 +32,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { setUser } from "./store/action/actionsignin/actionsignin";
 import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
-
+import Company from "./components/Company/Company"
 import ChapterRead from "./pages/Chapter";
 import MangaPage from "./pages/Manga";
 import NotFound from "./components/NotFound/NotFound";
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       { path: "/manager", element: <Manager /> },
       { path: "/mangas", element: <Mangas /> },
       {path:"/adminPanel", element: <AdminPanel />},
-      // {path:"/company", element: <Company />},
+      {path:"/company", element: <Company />},
      
 
     ],
