@@ -22,7 +22,7 @@ const EdithCompanyComp = () => {
                 <div className="w-72 rounded-lg p-6 text-center ">
                     <h1 className="text-center text-lg font-bold mb-4">EditCompany</h1>
 
-                    {/* Profile Image */}
+                   
                     <div className="flex justify-center mb-6">
                         <img
                             className="w-20 h-20 rounded-full object-cover border-2 border-gray-300"
@@ -31,7 +31,6 @@ const EdithCompanyComp = () => {
                         />
                     </div>
 
-                    {/* Input Fields */}
                     <div className="space-y-4">
                         <input
                             type="text"
@@ -66,7 +65,7 @@ const EdithCompanyComp = () => {
                         />
                     </div>
 
-                    {/* Buttons */}
+                   
                     <div className="mt-6 flex flex-col gap-4">
                         <button
                             onClick={handleSave}

@@ -4,32 +4,32 @@ import Switch from "react-switch";
 const NewPage = () => {
     const [isNew, setIsNew] = useState(true);
 
-    // Función para alternar el estado del interruptor
+   
     const toggleSwitch = () => {
         setIsNew(!isNew);
     };
 
-    // Función para volver a la página anterior
+   
     const goBack = () => {
         window.history.back();
     };
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gray-100">
-            {/* Header Section */}
+            
             <div className="p-8 flex flex-col items-center justify-center md:flex-row md:justify-between md:w-3/4 lg:w-2/3 mt-16">
-                {/* Imagen dentro del círculo */}
+                
                 <div className="w-20 h-20 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden md:w-44 md:h-44">
                     <img
-                        src="https://via.placeholder.com/64"
+                        src="https://tse1.mm.bing.net/th?id=OIP.jodtvkRq6MtN2EGRed5c7gHaEa&pid=Api&P=0&h=180"
                         alt="Logo Toei Animation"
                         className="w-full h-full object-cover"
                     />
                 </div>
 
-                {/* Contenedor del texto y el ícono */}
+                
                 <div className="flex flex-col items-center mt-4 md:mt-0 md:flex-row md:ml-8">
-                    {/* Textos */}
+                    
                     <div className="text-center md:text-left">
                         <p className="text-sm font-semibold text-gray-500 uppercase md:text-lg">
                             Toei Animation
@@ -37,7 +37,7 @@ const NewPage = () => {
                         <p className="text-base font-medium md:text-xl">Toei Animation</p>
                     </div>
 
-                    {/* Botón con el ícono */}
+                    
                     <button className="ml-4 mt-2 md:mt-0 p-3 bg-gray-200 hover:bg-gray-300 text-black rounded-lg shadow-md">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ const NewPage = () => {
             </div>
 
 
-            {/* Description Section */}
+          
             <div className="bg-gray-100 px-4 py-2 text-center">
                 <p className="text-xs text-gray-500">
                     Toei Animation Co., Ltd is a Japanese animation studio owned
@@ -67,7 +67,7 @@ const NewPage = () => {
             </div>
             <div className="w-full border-t border-gray-300 mb-6 lg:w-2/3"></div>
 
-            {/* Toggle Switch */}
+           
             <div className="flex items-center my-4">
                 <p className="text-sm font-medium mr-2">New</p>
                 <Switch
@@ -83,16 +83,16 @@ const NewPage = () => {
                 <p className="text-sm font-medium ml-2">Old</p>
             </div>
 
-            {/* Cards Section */}
+          
             <div className="grid grid-cols-2 gap-4 w-full px-6 lg:grid-cols-4 lg:w-2/3">
                 {[
                     {
                         title: "Komi Can't Communicate",
-                        image: "https://via.placeholder.com/150",
+                        image: "https://tse1.mm.bing.net/th?id=OIP._ptSPRwvptn5nncRm7pnGgHaEQ&pid=Api&P=0&h=180",
                     },
-                    { title: "Boruto", image: "https://via.placeholder.com/150" },
-                    { title: "Evangelion", image: "https://via.placeholder.com/150" },
-                    { title: "Kaguya-sama: Love is War", image: "https://via.placeholder.com/150" },
+                    { title: "Boruto", image: "https://tse1.mm.bing.net/th?id=OIP._ptSPRwvptn5nncRm7pnGgHaEQ&pid=Api&P=0&h=180" },
+                    { title: "Evangelion", image: "https://tse1.mm.bing.net/th?id=OIP._ptSPRwvptn5nncRm7pnGgHaEQ&pid=Api&P=0&h=180" },
+                    { title: "Kaguya-sama: Love is War", image: "https://tse1.mm.bing.net/th?id=OIP._ptSPRwvptn5nncRm7pnGgHaEQ&pid=Api&P=0&h=180" },
                 ].map((card, index) => (
                     <div
                         key={index}
@@ -108,7 +108,7 @@ const NewPage = () => {
                 ))}
             </div>
 
-            {/* Manage Button */}
+           
             <div className="w-full mt-6 px-6 lg:w-2/3">
                 <button
                     className="w-full py-2 font-bold rounded-lg shadow-md bg-orange-500 text-white hover:bg-orange-600 transition-colors"
@@ -118,7 +118,7 @@ const NewPage = () => {
                 </button>
             </div>
 
-            {/* Back Button */}
+            
             <div className="w-full mt-6 lg:w-2/3 flex justify-center">
                 <button
                     onClick={goBack}
