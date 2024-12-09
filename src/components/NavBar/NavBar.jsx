@@ -57,7 +57,7 @@ const NavBar = () => {
   return (
     <header className="relative">
       <div className="flex items-center justify-between absolute z-50 text-orange-500 p-4 w-full">
-        <div>
+
         <button
           className="p-2 rounded focus:outline-none focus:ring focus:ring-orange-500"
           onClick={toggleMenu}
