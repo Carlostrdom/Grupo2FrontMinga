@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import bgProfiles from "../../assets/image/bgProfiles.jpg";
+import Switch from "react-switch";
 
 const Author = () => {
-    const [isNewSelected, setIsNewSelected] = useState(true);
+    const [isNew, setIsNew] = useState(true);
     const [isOn, setIsOn] = useState(false);
 
     const toggleSwitch = () => {
@@ -28,7 +29,7 @@ const Author = () => {
                 <div className="relative flex flex-row items-center w-full px-4 py-8 text-left md:flex-col md:items-center md:justify-center md:py-12">
                     {/* Imagen del autor */}
                     <img
-                        src="https://via.placeholder.com/80"
+                        src="https://s3-alpha-sig.figma.com/img/d771/e8ee/4d516f000e29670bda6ceb5a6c836183?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TRB8FmOriCJyxjVdIa1fvNIW~oh~crxMLW~D0wz770m4mD7Q4v~l5XBiYu8GgPHk4623IdKHAZLSS4DN~WWQzOvQf6WrhpDp06uhV0g3HBt84-57IHvdICd56bXPBKrKNTnsE9SxYudT7ybVJiUyWyeeeW17CmWl3k56DKQ-puV4swXxB84Z~QTwQOXK3yqRA-yVFKM8cR26DnGSG5ag0CmLfZKxAl19TohkmKHd3ji8qyiJSTSwqTjdmN3BBc6dJpWUOJt3lO64JmNhfbSUqUvQA2a2bKuKkYG1syPEO~~fiGiZoe18JbFuzrhqNzNhzIlIJw223GC2nJONMnB2bA__"
                         alt="Author Avatar"
                         className="w-28 h-28 rounded-full object-cover border-4 border-white md:w-36 md:h-36 lg:w-44 lg:h-44"
                     />
@@ -99,26 +100,28 @@ const Author = () => {
             <div className="w-full border-t border-gray-300 mb-6 lg:w-2/3"></div>
 
             {/* Toggle personalizado */}
-            <div className="w-full flex justify-center items-center mb-6 lg:w-2/3">
-                <span className="text-sm font-medium text-gray-600 lg:text-base">new</span>
-                <div
-                    onClick={toggleSwitch}
-                    className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 mx-4 bg-white border-2 ${isOn ? "border-green-500" : "border-orange-500"}`}
-                >
-                    <div
-                        className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 ${isOn ? "translate-x-7 bg-green-500" : "translate-x-0 bg-orange-500"}`}
-                    ></div>
-                </div>
-                <span className="text-sm font-medium text-gray-600 lg:text-base">old</span>
+            <div className="flex items-center my-4">
+                <p className="text-sm font-medium mr-2">New</p>
+                <Switch
+                    checked={isNew}
+                    onChange={toggleSwitch}
+                    onColor="#FF6B2B"
+                    offColor="#ccc"
+                    checkedIcon={false}
+                    uncheckedIcon={false}
+                    height={24}
+                    width={48}
+                />
+                <p className="text-sm font-medium ml-2">Old</p>
             </div>
 
             {/* Cards de mangas */}
             <div className="grid grid-cols-2 gap-4 w-full lg:grid-cols-4 lg:w-2/3">
                 {[
-                    { title: "Komi san Can't Communicate", img: "https://via.placeholder.com/150" },
-                    { title: "Boruto", img: "https://via.placeholder.com/150" },
-                    { title: "Evangelion", img: "https://via.placeholder.com/150" },
-                    { title: "Kaguya-sama: Love is war", img: "https://via.placeholder.com/150" },
+                    { title: "Komi san Can't Communicate", img: "https://s3-alpha-sig.figma.com/img/f837/7253/645cdf89c843065d92f0198892d1faec?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZsmPoZ9ClmNPRqw-VD6cCUeGlTj1RT89oP1cq3Gb0gjGrncNhRu6d11KD4~~NldrLr4~utytitsaSNYlTQAZpfUw7pHsRN70cv~4LpXoipPw4hZ6bOrqSx8hDq47PLEhA64c8zhvhmpwHYLxS~DC4CUZJ50c7EC6HcUeNIuKeh3fy~jAa4VC3lsp71DOo8C28miRhYD3Nqsojf-Pf9e6AhIOHOG3S0bwUiWZGlHd10b91-xBS9l4~m~mu8iQrund00-0cBx0cQ-zuy4c5nbaWQuXgr6bR3bpen1DXP0H5qKYBt7UE~Ap8ArtgbVkniMiqRl2RtSKEwgZtxZcEpy-dw__" },
+                    { title: "Boruto", img: "https://s3-alpha-sig.figma.com/img/4752/041f/cc793dcc52688d573a23d35008034950?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lmy-Ll8SLnUMX2Yghv~rNwaVgK9~dxRtSr~Pb02wMR9axC27LlAcTscQrWYcCWEGU8~JVSiHBvEyrfs09i9aKrgtjk2d9weosMWIlSFnP8rfYW5BmiPgYQP3LKBO~A8MfAQM~-jBOk26psNyYjmpQcNtnCtPHqcxsQcmoYJHz1NGev7MaA2A3i-HFFm3EcnjEE9hwLHlAoE4YUpjYBulzTjgsCPL7xKcnDRvpxsvSwj9tvud-hWbOWT1~sqtZiDBO4e2xsa9Wi4kl0JvPdRU6QWeD3H0Te2QU91-5dYQ0t4B8xJf7V2~8Krguv2mmITtgPZeXVPohP9rONQ3pW7mHw__" },
+                    { title: "Evangelion", img: "https://s3-alpha-sig.figma.com/img/300d/6335/966c0fc9b1513215c1a4f71556951932?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Xe19cz30kWoo92IcqC~cvLH3ItjvOGHPZ6rk9p1sfy7AjtEE8GUYrIlmReSg483DI1Gxz8ZefBTtYJF6oydVOP0uP0Heo8TxKDO4TbM9oXyoP4jPlNCfE~PIoAKJHU7Tw0nZhVx3tzlDJ-jHtZHuZxlOjCALJ72aWC7jlJud50koObI6t~3xCtv79J7sl9842~O-KAw3rw5Je3O6mTt56qejY8bQknQXJ9AmldFSRxZy2prTGZnssoNc4Z2DiVlv6dvrozag2zX7m9hMTh0LyJxDNQihCTHkOg4gPZOwavcejEntBRM5Da3Pr~v7f7N2GlTGU4nmbIw~Xt1dFRHk5w__" },
+                    { title: "Kaguya-sama: Love is war", img: "https://s3-alpha-sig.figma.com/img/0956/b289/ce446d132f775f7d46948fd643a81f14?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YaWSUZk~hJLKULlpfqBLYlqromC23-P1XYSPiVZriCGg13YqlrhOWq~YoZ2kZ9oJEbJlayXO7XPavYDL-9T95AoFk5LucqeUHsF7JmzxdRTMoapSE0-AiRJSmYrBGpD~WnaCxvQjul0sLy2z2lgoNK5~AL5sYYkm3RJajiu9tpM6tqmirDfe9cHv4wO-TQrw-trXRBmOP4XT70t4YJ4~1lF5baoY~D4OeWxe5vGFQkzPEaJDdDXywg1FOzJxrqCC5LGtxZt7oxcJIghyROQqUnj4VL7v4y2EM~I2NOsvaxfGyE~PZ~lwSYairG8IsTS3g9Eh0diMuDclvhCt0-2-Vg__" },
                 ].map((manga, index) => (
                     <div key={index} className="flex flex-col items-center">
                         <img

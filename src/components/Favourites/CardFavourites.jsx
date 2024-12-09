@@ -38,7 +38,7 @@ const CardFavourites = () => {
   return (
     <div className="relative -mt-12 px-8">
       <div className="bg-white rounded-xl shadow-lg p-6 max-w-[90%] mx-auto relative z-10">
-        <div className="flex pt-6 gap-4 mb-6 ml-44">
+        <div className="flex flex-wrap gap-4 mb-6 justify-center md:justify-start md:ml-44">
           <button className="px-4 py-2 rounded-lg bg-gray-900 text-white">All</button>
           <button className="px-4 py-2 rounded-lg bg-red-200 text-gray-700">Shonen</button>
           <button className="px-4 py-2 rounded-lg bg-yellow-200 text-gray-700">Seinen</button>
