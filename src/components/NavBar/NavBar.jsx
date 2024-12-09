@@ -83,7 +83,6 @@ const NavBar = () => {
           <img className="w-25 h-10" src={logo} alt="Logo" />
           <p className="text-3xl font-bold ml-2 mr-10">雪</p>
         </div>
-      </div>
       {menuOpen && (
         <nav className="fixed top-0 left-0 w-64 h-full bg-orange-500 text-white flex flex-col p-6 z-50">
           {token && (
