@@ -1,10 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import fetchchapter  from "../../action/actionChapter/actionChapter";
+import {fetchchapter, selectChapter}  from "../../action/actionChapter/actionChapter";
 
 const initialState = {
     chapters: [],
     loading: true,
     error: null,
+    selectChapter: {}
 };
 
 const reducerChapter = createReducer(initialState, (builder) => {
@@ -20,6 +21,8 @@ const reducerChapter = createReducer(initialState, (builder) => {
         .addCase(fetchchapter.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        }).addCase(selectChapter, (state, action) => {
+            state.selectChapter = action.payload;
         });
 });
 

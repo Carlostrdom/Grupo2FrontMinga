@@ -1,5 +1,7 @@
-import {  createAsyncThunk } from "@reduxjs/toolkit";
+import {  createAsyncThunk,createAction } from "@reduxjs/toolkit";
 import axios from "axios";
+
+const selectChapter = createAction("SELECT_CHAPTER");
 
 const fetchchapter = createAsyncThunk("chapter/fetchchapter", async (manga_id, { rejectWithValue }) => {
     try {
@@ -13,4 +15,4 @@ const fetchchapter = createAsyncThunk("chapter/fetchchapter", async (manga_id, {
 });
 
 
-export default fetchchapter ;
+export  {fetchchapter, selectChapter}; ;

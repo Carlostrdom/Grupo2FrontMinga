@@ -1,40 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { fetchchapter } from '../../store/action/actionChapter/actionChapter';
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MangaReader = () => {
-  const [chapter, setChapter] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const location = useLocation();
+  const selectedManga =location.state
+  const dispatch = useDispatch();
+
+  const { chapters , loading, error } = useSelector((state) => state.chapterStore);
+
   const [currentPage, setCurrentPage] = useState(0); // Estado para la página actual
 
   // La ruta del capítulo específica
-  const chapterId = "674d194042af858e12949ccb"; // ID del capítulo
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/chapter/chapterId/${chapterId}`;
-
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch chapter");
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.response) {
-          setChapter(data.response);
-        } else {
-          throw new Error("Unexpected response structure");
-        }
-      })
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [chapterId]);
+    if (selectedManga?._id) {
+      dispatch(fetchchapter( selectedManga._id ));
+      console.log(fetchchapter._id, "fetchchapter");
+      
+    }
+  }, [dispatch, selectedManga._id]);
 
   if (loading) return <div className="text-center text-xl">Loading chapter...</div>;
   if (error) return <div className="text-center text-xl text-red-500">Error: {error}</div>;
-  if (!chapter) return <div className="text-center text-xl">No chapter found for this manga.</div>;
+  if (!chapters) return <div className="text-center text-xl">No chapters found for this manga.</div>;
 
-  const pages = chapter.pages; 
+  const pages = chapters.pages; 
 
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
@@ -51,7 +43,7 @@ const MangaReader = () => {
   return (
     <div className="flex justify-center items-center  bg-gray-900">
     <div className="mt-20 bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
-      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">{chapter.title}</h2>
+      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">{chapters.title}</h2>
   
       <div className="flex justify-between items-center mb-4">
         <button 

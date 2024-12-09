@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import fetchchapter from "../../store/action/actionChapter/actionChapter";
+import {fetchchapter} from "../../store/action/actionChapter/actionChapter";
 import { Link, useLocation } from "react-router-dom";
 
 const Manga = () => {
@@ -9,10 +9,10 @@ const Manga = () => {
   const selectedManga =location.state
 
   const { chapters , loading, error } = useSelector((state) => state.chapterStore);
-console.log(selectedManga,"selectedManga");
-console.log(chapters,"chapters este es el chapters");
+  console.log(chapters, "chapters siiiiiiiiiiii");
+  
 
-  const [activeTab, setActiveTab] = useState("manga");
+  const [activeTab, setActiveTab] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const chaptersPerPage = 3;
 
