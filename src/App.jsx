@@ -36,6 +36,7 @@ import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
 import ChapterRead from "./pages/Chapter";
 import MangaPage from "./pages/Manga";
 import NotFound from "./components/NotFound/NotFound";
+import Author from "./components/Author.jsx/Author"
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       { path: "/mangas", element: <Mangas /> },
       {path:"/adminPanel", element: <AdminPanel />},
       // {path:"/company", element: <Company />},
-      // {path:"/Author", element: <Author />},
+     
 
     ],
   },
@@ -71,6 +72,7 @@ const router = createBrowserRouter([
       {path: "/newRole", element: <NewRole /> }, 
       {path: "/chapter", element: <ChapterRead /> },
       { path: "/manga", element: <MangaPage />  },
+      {path:"/author", element: <Author />},
     ]
   }, 
     {path: "*", element: <NotFound /> },
