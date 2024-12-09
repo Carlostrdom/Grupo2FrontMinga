@@ -1,27 +1,24 @@
-
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const MangaReader = () => {
   const location = useLocation();
-  const selectedManga =location.state // Recibe el capítulo desde el estado
+  const selectedManga = location.state;
   console.log(location, "location este es");
-  
+
   console.log(selectedManga, "selectedManga asdawad");
-  
 
-  const [currentPage, setCurrentPage] = useState(0); // Estado para la página actual
+  const [currentPage, setCurrentPage] = useState(0);
 
- 
-
-  // Manejo de estados de carga y errores
-  // if (loading) return <div className="text-center text-xl">Loading chapter...</div>;
-  // if (error) return <div className="text-center text-xl text-red-500">Error: {error}</div>;
-  if (!selectedManga || !selectedManga.pages) return <div className="text-center text-xl">No pages found for this chapter.</div>;
+  if (!selectedManga || !selectedManga.pages)
+    return (
+      <div className="text-center text-xl">
+        No pages found for this chapter.
+      </div>
+    );
 
   const pages = selectedManga.pages;
 
-  // Navegación de páginas
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) setCurrentPage((prev) => prev + 1);
   };

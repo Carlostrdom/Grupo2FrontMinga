@@ -7,8 +7,13 @@ const EdithCompanyComp = () => {
   const [profileImage, setProfileImage] = useState("");
 
   const handleSave = () => {
-    console.log("Saving company:", { nameCompany, location, website, profileImage });
-    alert("Company details saved!");
+    console.log("Saving author:", {
+      nameCompany,
+      location,
+      website,
+      profileImage,
+    });
+    alert("Author details saved!");
   };
 
   const handleDelete = () => {

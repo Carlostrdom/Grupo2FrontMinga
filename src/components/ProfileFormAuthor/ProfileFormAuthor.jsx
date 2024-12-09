@@ -9,7 +9,7 @@ const ProfileFormAuth = () => {
     const [date, setDate] = useState('');
     const dispatch = useDispatch();
     
-const { loading, error } = useSelector((state) => state.updateAuthorStore); // Ajusta según tu estructura de store
+const { loading, error } = useSelector((state) => state.updateAuthorStore); 
 
 const handleSave = (e) => {
   e.preventDefault();

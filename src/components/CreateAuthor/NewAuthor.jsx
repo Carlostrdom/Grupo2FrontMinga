@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {createAuthor,setUser} from "../../store/action/actionsignin/actionsignin";
+import {
+  createAuthor,
+  setUser,
+} from "../../store/action/actionsignin/actionsignin";
 
 const NewAuthorForm = () => {
   const { user, token } = useSelector((state) => state.signinStore);
   console.log(user, "userasda carlosesete");
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [name, setName] = useState("");
   const [last_name, setLastName] = useState("");
   const [city, setCity] = useState("");
-  
+
   const [date, setDate] = useState("");
   const [photo, setPhoto] = useState("");
 
@@ -22,10 +25,9 @@ const NewAuthorForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user.user._id, "user._id que esta en newAuthor");
-    setIsSubmitting(true); 
+    setIsSubmitting(true);
 
     try {
-
       dispatch(
         createAuthor({
           name,
@@ -36,13 +38,13 @@ const NewAuthorForm = () => {
           user_id: user.user._id,
         })
       );
-      
+
       navigate("/manager");
       console.log(createAuthor, "createAuthor ya sabes");
     } catch (err) {
       setError("Failed to create author. Please try again.");
     } finally {
-      setIsSubmitting(false); 
+      setIsSubmitting(false);
     }
   };
 
@@ -166,7 +168,7 @@ const NewAuthorForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isSubmitting} // Desactiva si está en progreso
+            disabled={isSubmitting}
             className={`bg-orange-500 text-white py-2 px-6 rounded-lg font-bold text-sm shadow-md 
         ${
           isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-orange-600"

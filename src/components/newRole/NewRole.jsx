@@ -12,11 +12,10 @@ const NewRole = () => {
 
   const handleRoleSelection = (role) => {
     setSelectedRole(role);
-    // Redirigir según el rol seleccionado
     if (role === "author") {
-      navigate("/newAuthor"); // Redirigir a la página de autor
+      navigate("/newAuthor"); 
     } else if (role === "company") {
-      navigate("/newCompany"); // Redirigir a la página de empresa
+      navigate("/newCompany"); 
     }
   };
 

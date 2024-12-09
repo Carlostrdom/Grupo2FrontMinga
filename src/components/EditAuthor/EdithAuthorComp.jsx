@@ -8,7 +8,13 @@ const EdithAuthorComp = () => {
   const [photo, setPhoto] = useState("");
 
   const handleSave = () => {
-    console.log("Saving author:", { firstName, lastName, location, Date, photo });
+    console.log("Saving author:", {
+      firstName,
+      lastName,
+      location,
+      Date,
+      photo,
+    });
     alert("Author details saved!");
   };
 
