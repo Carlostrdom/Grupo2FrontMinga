@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { updateAuthor } from "../../store/action/actionUpdateAuthor/updateAuthor";
 
 const ProfileFormAuth = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [address, setAddress] = useState('');
     const [date, setDate] = useState('');
+    const dispatch = useDispatch();
+    
+const { loading, error } = useSelector((state) => state.updateAuthorStore); // Ajusta según tu estructura de store
 
-    const handleSave = (e) => {
-        e.preventDefault();
-        console.log('Profile saved:', { name, lastname, address, date });
-        alert('Profile saved successfully!');
-    };
+const handleSave = (e) => {
+  e.preventDefault();
+  const authorData = { name, lastname, address, date };
+  dispatch(updateAuthor(authorData));
+};
 
     const handleDelete = () => {
         console.log('Account deleted');
