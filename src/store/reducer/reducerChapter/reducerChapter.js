@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import fetchchapter  from "../../action/actionchapter/actionchapter";
+import fetchchapter  from "../../action/actionChapter/actionChapter";
 
 const initialState = {
     chapters: [],
