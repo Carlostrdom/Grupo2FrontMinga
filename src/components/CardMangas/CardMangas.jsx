@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../store/action/actioncategory/actioncategory";
 import { useNavigate } from "react-router-dom";
+import { fetchmangas } from "../../store/action/actionmangas/actionmangas";
 
 const CardMangas = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const {mangas, loading, error } = useSelector(state => state.mangasStore);
+  const {category, selecCategory} = useSelector(state => state.categoryStore);
+ console.log(category,"manger");
+ const navigate = useNavigate();
+ 
+  let dispatch = useDispatch();  
+  useEffect(() => {
+    dispatch(fetchmangas({category:selecCategory}))
+    
+  },[selecCategory])
+
   const handlerNavigate = (manga) => {
     if (isLoggedIn) {
       navigate("/manga", { state: manga });
@@ -15,9 +25,6 @@ const CardMangas = () => {
   };
 
   
-  const { mangas, loading, error } = useSelector((state) => state.mangasStore);
-  const { category } = useSelector((state) => state.categoryStore);
-
 
   const isLoggedIn = !!localStorage.getItem("token");
 

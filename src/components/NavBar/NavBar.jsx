@@ -14,45 +14,48 @@ const rolePermissions = {
   0: [
     { to: "/", text: "Home" },
     { to: "/mangas", text: "Mangas" },
-    { to: "/manga", text: "Manga" },
     { to: "/newRole", text: "New role" }
   ],
   1: [
     { to: "/", text: "Home" },
     { to: "/mangas", text: "Mangas" },
-    { to: "/manga", text: "Manga" },
     { to: "/authorprofile", text: "Author Profile" },
     { to: "/manager", text: "Manager" },
+    { to: "/author", text: "Author" },
   ],
   2: [
     { to: "/", text: "Home" },
     { to: "/mangas", text: "Mangas" },
-    { to: "/manga", text: "Manga" },
     { to: "/authorprofile", text: "Author Profile" },
     { to: "/manager", text: "Manager" },
+    { to: "/company", text: "Company" },
+
   ],
   3: [
     { to: "/", text: "Home" },
     { to: "/mangas", text: "Mangas" },
-    { to: "/manga", text: "Manga" },
     { to: "/authorprofile", text: "Author Profile" },
     { to: "/manager", text: "Manager" },
+    { to: "/author", text: "Author" },
+    { to: "/company", text: "Company" },
     { to: "/adminPanel", text: "Admin Panel" },
   ],
 };
 
 const NavBar = () => {
-  const { user = null, token = null, role } = useSelector(
+  const { user, token , role ,loading} = useSelector(
     (state) => state.signinStore || {}
   );
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
+console.log(user, "user que esta en navBar");
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const defaultPhoto =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWUhlsFN5Mtzlxg8ZRtInt1GyjRKF9Io0a9A&s";
 
+ if(!loading){
   return (
     <header className="relative">
       <div className="flex items-center justify-between absolute z-50 text-orange-500 p-4 w-full">
@@ -91,7 +94,7 @@ const NavBar = () => {
                 alt="User Avatar"
                 className="w-16 h-16 rounded-full border-2 border-white"
               />
-              <p className="text-lg">{user.user.email}</p>
+              <p className="text-lg">{user?.email ? user.email : user.user.email}</p>
             </div>
           )}
           <ul className="flex flex-col gap-4">
@@ -132,6 +135,7 @@ const NavBar = () => {
       )}
     </header>
   );
+ }
 };
 
 export default NavBar;

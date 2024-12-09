@@ -1,33 +1,26 @@
+import { createReducer } from "@reduxjs/toolkit";
+import {updateAuthor}  from "../../action/actionUpdateAuthor/updateAuthor";
+
 const initialState = {
-    author: null,
-    loading: false,
+    author: [],
+    loading: true,
     error: null,
-  };
-  
-  const authorReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case "UPDATE_AUTHOR_REQUEST":
-        return {
-          ...state,
-          loading: true,
-          error: null,
-        };
-      case "UPDATE_AUTHOR_SUCCESS":
-        return {
-          ...state,
-          loading: false,
-          author: action.payload,
-        };
-      case "UPDATE_AUTHOR_FAILURE":
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default authorReducer;
-  
+};
+
+const reducerAuthor = createReducer(initialState, (builder) => {
+    builder
+        .addCase(updateAuthor.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(updateAuthor.fulfilled, (state, action) => {
+            state.loading = false;
+            state.chapters = action.payload;
+        })
+        .addCase(updateAuthor.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+});
+
+export default reducerAuthor;

@@ -31,12 +31,13 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import { setUser } from "./store/action/actionsignin/actionsignin";
-import {SignRoute,AuthRoute} from "./components/sininRouter/signinRouter";
+import {SignRoute,AuthRoute,NoLoginRoute} from "./components/sininRouter/signinRouter";
 import Company from "./components/Company/Company"
 import ChapterRead from "./pages/Chapter";
 import MangaPage from "./pages/Manga";
 import NotFound from "./components/NotFound/NotFound";
 import Author from "./components/Author.jsx/Author"
+
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       { path: "/authorprofile", element: <AuthorProfile /> },
       { path: "/manager", element: <Manager /> },
       { path: "/mangas", element: <Mangas /> },
-      {path:"/adminPanel", element: <AdminPanel />},
+      {path:"/adminPanel", element: <NoLoginRoute><AdminPanel /></NoLoginRoute>},
       {path:"/company", element: <Company />},
      
 
