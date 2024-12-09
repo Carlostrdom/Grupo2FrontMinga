@@ -3,7 +3,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchcategory } from "../../store/action/actioncategory/actioncategory";
 const Carousel = () => {
-  const { category, loading, error } = useSelector((state) => state.categoryStore);
+  const { category, loading, error } = useSelector(
+    (state) => state.categoryStore
+  );
   console.log(category);
 
   const [currentSlide, setCurrentSlide] = useState(0);

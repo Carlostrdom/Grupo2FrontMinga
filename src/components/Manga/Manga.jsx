@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {fetchchapter} from "../../store/action/actionChapter/actionChapter";
+import { fetchchapter } from "../../store/action/actionChapter/actionChapter";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Manga = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const selectedManga =location.state
+  const selectedManga = location.state;
 
-  const { chapters , loading, error } = useSelector((state) => state.chapterStore);
-  
+  const { chapters, loading, error } = useSelector(
+    (state) => state.chapterStore
+  );
 
   const [activeTab, setActiveTab] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,14 +19,16 @@ const Manga = () => {
   // Fetch Chapters
   useEffect(() => {
     if (selectedManga?._id) {
-      dispatch(fetchchapter( selectedManga._id ));
-      
+      dispatch(fetchchapter(selectedManga._id));
     }
   }, [dispatch, selectedManga._id]);
 
   // Pagination Logic
   const startIndex = (currentPage - 1) * chaptersPerPage;
-  const currentChapters = chapters.slice(startIndex, startIndex + chaptersPerPage);
+  const currentChapters = chapters.slice(
+    startIndex,
+    startIndex + chaptersPerPage
+  );
   const totalPages = Math.ceil(chapters.length / chaptersPerPage);
 
   // Render Tab Content
@@ -42,7 +45,9 @@ const Manga = () => {
             currentPage={currentPage}
             totalPages={totalPages}
             onPrev={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            onNext={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onNext={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
           />
         </div>
       );
@@ -78,7 +83,9 @@ const Manga = () => {
           <button
             onClick={() => setActiveTab("manga")}
             className={`px-4 py-2 ${
-              activeTab === "manga" ? "text-orange-500 font-bold" : "text-gray-600"
+              activeTab === "manga"
+                ? "text-orange-500 font-bold"
+                : "text-gray-600"
             }`}
           >
             Manga
@@ -86,7 +93,9 @@ const Manga = () => {
           <button
             onClick={() => setActiveTab("chapters")}
             className={`px-4 py-2 ${
-              activeTab === "chapters" ? "text-orange-500 font-bold" : "text-gray-600"
+              activeTab === "chapters"
+                ? "text-orange-500 font-bold"
+                : "text-gray-600"
             }`}
           >
             Chapters
@@ -96,9 +105,7 @@ const Manga = () => {
         {/* Dynamic Content */}
         <div>{renderTabContent()}</div>
       </div>
-      <div className="space-y-4">
-      
-  </div>
+      <div className="space-y-4"></div>
     </div>
   );
 };
@@ -108,33 +115,42 @@ const ChapterList = ({ chapters }) => {
   const navigate = useNavigate();
   const hamlerNavigate = (chap) => {
     navigate("/chapter", { state: chap });
-  }
+  };
   return (
     <div className="space-y-4">
-    {chapters.length > 0 ? (
-  chapters.map((chap, idx) => (
-    <div key={idx} className="flex justify-between bg-gray-100 p-3 rounded-lg shadow-md">
-      <div className="flex items-center space-x-4">
-        <img src={chap.cover_photo} alt={`Chapter ${chap.title}`} className="w-10 h-10 rounded-md" />
-        <div>
-          <h3 className="font-bold">Chapter #{chap.title}</h3>
-          <p className="text-sm text-gray-600">{chap.pages.length} pages</p>
-        </div>
-      </div>
-
-      <button onClick={() => hamlerNavigate(chap)} className="bg-orange-500 text-white px-3 py-1 rounded-md">
-     
-    Read
-</button>    </div>
-  ))
-) : (
-  <p>No hay capítulos disponibles.</p>
-)}
-  </div>
-);
-  
-}
- 
+      {chapters.length > 0 ? (
+        chapters.map((chap, idx) => (
+          <div
+            key={idx}
+            className="flex justify-between bg-gray-100 p-3 rounded-lg shadow-md"
+          >
+            <div className="flex items-center space-x-4">
+              <img
+                src={chap.cover_photo}
+                alt={`Chapter ${chap.title}`}
+                className="w-10 h-10 rounded-md"
+              />
+              <div>
+                <h3 className="font-bold">Chapter #{chap.title}</h3>
+                <p className="text-sm text-gray-600">
+                  {chap.pages.length} pages
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => hamlerNavigate(chap)}
+              className="bg-orange-500 text-white px-3 py-1 rounded-md"
+            >
+              Read
+            </button>{" "}
+          </div>
+        ))
+      ) : (
+        <p>No hay capítulos disponibles.</p>
+      )}
+    </div>
+  );
+};
 
 // Pagination Controls Component
 const PaginationControls = ({ currentPage, totalPages, onPrev, onNext }) => (
@@ -143,7 +159,9 @@ const PaginationControls = ({ currentPage, totalPages, onPrev, onNext }) => (
       onClick={onPrev}
       disabled={currentPage === 1}
       className={`px-3 py-1 rounded-md ${
-        currentPage === 1 ? "bg-gray-300 text-gray-500" : "bg-orange-500 text-white"
+        currentPage === 1
+          ? "bg-gray-300 text-gray-500"
+          : "bg-orange-500 text-white"
       }`}
     >
       Previous
@@ -155,7 +173,9 @@ const PaginationControls = ({ currentPage, totalPages, onPrev, onNext }) => (
       onClick={onNext}
       disabled={currentPage === totalPages}
       className={`px-3 py-1 rounded-md ${
-        currentPage === totalPages ? "bg-gray-300 text-gray-500" : "bg-orange-500 text-white"
+        currentPage === totalPages
+          ? "bg-gray-300 text-gray-500"
+          : "bg-orange-500 text-white"
       }`}
     >
       Next

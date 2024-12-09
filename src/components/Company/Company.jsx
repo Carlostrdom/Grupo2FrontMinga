@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 
 const NewPage = () => {
     const [isNew, setIsNew] = useState(true);
+    const [isOn, setIsOn] = useState(false);
 
+    const navigate = useNavigate(); 
+
+    const handleRedirect = () => {
+        navigate('/manager'); 
+    };
    
     const toggleSwitch = () => {
         setIsNew(!isNew);
@@ -109,15 +116,14 @@ const NewPage = () => {
             </div>
 
            
-            <div className="w-full mt-6 px-6 lg:w-2/3">
-                <button
-                    className="w-full py-2 font-bold rounded-lg shadow-md bg-orange-500 text-white hover:bg-orange-600 transition-colors"
-                    onClick={() => alert("Manage action triggered!")}
-                >
-                    Manage
-                </button>
-            </div>
-
+            <div className="w-full mt-6 lg:w-2/3">
+            <button
+                className={`w-full py-2 font-bold rounded-lg shadow-md transition-colors ${isOn ? "bg-green-500 text-white hover:bg-green-600" : "bg-orange-500 text-white hover:bg-orange-600"}`}
+                onClick={handleRedirect}
+            >
+                Manager!
+            </button>
+        </div>
             
             <div className="w-full mt-6 lg:w-2/3 flex justify-center">
                 <button

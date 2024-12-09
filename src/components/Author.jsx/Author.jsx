@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import bgProfiles from "../../assets/image/bgProfiles.jpg";
 import Switch from "react-switch";
+import { useNavigate } from "react-router-dom";
 
 const Author = () => {
     const [isNew, setIsNew] = useState(true);
     const [isOn, setIsOn] = useState(false);
+    const navigate = useNavigate();
 
     const toggleSwitch = () => {
         setIsOn(!isOn);
@@ -136,13 +138,17 @@ const Author = () => {
 
             {/* Botón Manage */}
             <div className="w-full mt-6 lg:w-2/3">
-                <button
-                    className={`w-full py-2 font-bold rounded-lg shadow-md transition-colors ${isOn ? "bg-green-500 text-white hover:bg-green-600" : "bg-orange-500 text-white hover:bg-orange-600"}`}
-                    onClick={() => console.log("Redirigiendo...")}
-                >
-                    Manage!
-                </button>
-            </div>
+      <button
+        className={`w-full py-2 font-bold rounded-lg shadow-md transition-colors ${
+          isOn
+            ? 'bg-green-500 text-white hover:bg-green-600'
+            : 'bg-orange-500 text-white hover:bg-orange-600'
+        }`}
+        onClick={() => navigate('/manager')}
+      >
+        Manager!
+      </button>
+    </div>
 
             {/* Botón Regresar */}
             <div className="w-full mt-6 lg:w-2/3 flex justify-center">
