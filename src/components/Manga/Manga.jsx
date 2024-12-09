@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchchapter} from "../../store/action/actionChapter/actionChapter";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Manga = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,6 @@ const Manga = () => {
   const selectedManga =location.state
 
   const { chapters , loading, error } = useSelector((state) => state.chapterStore);
-  console.log(chapters, "chapters siiiiiiiiiiii");
   
 
   const [activeTab, setActiveTab] = useState("");
@@ -20,7 +19,6 @@ const Manga = () => {
   useEffect(() => {
     if (selectedManga?._id) {
       dispatch(fetchchapter( selectedManga._id ));
-      console.log(fetchchapter, "fetchchapter");
       
     }
   }, [dispatch, selectedManga._id]);
@@ -106,8 +104,13 @@ const Manga = () => {
 };
 
 // Chapter List Component
-const ChapterList = ({ chapters }) => (
-  <div className="space-y-4">
+const ChapterList = ({ chapters }) => {
+  const navigate = useNavigate();
+  const hamlerNavigate = (chap) => {
+    navigate("/chapter", { state: chap });
+  }
+  return (
+    <div className="space-y-4">
     {chapters.length > 0 ? (
   chapters.map((chap, idx) => (
     <div key={idx} className="flex justify-between bg-gray-100 p-3 rounded-lg shadow-md">
@@ -119,8 +122,9 @@ const ChapterList = ({ chapters }) => (
         </div>
       </div>
 
-      <button className="bg-orange-500 text-white px-3 py-1 rounded-md">
-  <Link to="/chapter" className="text-white">Read</Link>
+      <button onClick={() => hamlerNavigate(chap)} className="bg-orange-500 text-white px-3 py-1 rounded-md">
+     
+    Read
 </button>    </div>
   ))
 ) : (
@@ -128,6 +132,9 @@ const ChapterList = ({ chapters }) => (
 )}
   </div>
 );
+  
+}
+ 
 
 // Pagination Controls Component
 const PaginationControls = ({ currentPage, totalPages, onPrev, onNext }) => (
