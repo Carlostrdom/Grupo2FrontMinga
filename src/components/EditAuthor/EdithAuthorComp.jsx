@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
+
 const EdithAuthorComp = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [location, setLocation] = useState("");
-    const [birthDate, setBirthDate] = useState("");
-    const [profileImage, setProfileImage] = useState("");
+    const [Date, setDate] = useState("");
+    const [photo, setPhoto] = useState("");
 
     const handleSave = () => {
-        console.log("Saving author:", { firstName, lastName, location, birthDate, profileImage });
+        console.log("Saving author:", { firstName, lastName, location, Date, photo });
         alert("Author details saved!");
     };
 
@@ -27,7 +28,7 @@ const EdithAuthorComp = () => {
                     <div className="flex justify-center mb-6">
                         <img
                             className="w-20 h-20 rounded-full object-cover border-2 border-gray-300"
-                            src={profileImage || "https://via.placeholder.com/80"}
+                            src={photo || "https://via.placeholder.com/80"}
                             alt="Profile"
                         />
                     </div>
@@ -57,13 +58,13 @@ const EdithAuthorComp = () => {
                         />
                         <input
                             type="date"
-                            value={birthDate}
+                            value={Date}
                             onChange={(e) => setBirthDate(e.target.value)}
                             className="w-full border-b border-gray-400 focus:outline-none focus:border-gray-600 text-sm py-1"
                         />
                         <input
                             type="text"
-                            value={profileImage}
+                            value={photo}
                             onChange={(e) => setProfileImage(e.target.value)}
                             placeholder="URL Profile Image"
                             className="w-full border-b border-gray-400 focus:outline-none focus:border-gray-600 text-sm py-1"
