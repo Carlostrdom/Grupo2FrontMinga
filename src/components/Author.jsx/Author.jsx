@@ -35,15 +35,15 @@ const Author = () => {
                     />
                     {/* Texto del autor */}
                     <div className="flex-1 mt-4 md:mt-0 md:ml-6">
-                        <h1 className="text-lg font-bold text-white  md:text-2xl lg:text-3xl">Lucas Ezequiel Silva</h1>
-                        <p className="text-sm text-white flex items-center mt-2 md:text-base">
+                        <h1 className="text-lg font-bold text-black  md:text-2xl lg:text-3xl">Lucas Ezequiel Silva</h1>
+                        <p className="text-sm text-black flex items-center mt-2 md:text-base">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor"
-                                className="w-5 h-5 mr-2 text-white md:w-6 md:h-6"
+                                className="w-5 h-5 mr-2 text-black md:w-6 md:h-6"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -58,14 +58,14 @@ const Author = () => {
                             </svg>
                             Caseros, Buenos Aires
                         </p>
-                        <p className="text-sm text-white flex items-center mt-2 md:text-base">
+                        <p className="text-sm text-black flex items-center mt-2 md:text-base">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor"
-                                className="w-5 h-5 mr-2 text-white  md:w-6 md:h-6"
+                                className="w-5 h-5 mr-2 text-black  md:w-6 md:h-6"
                             >
                                 <path
                                     strokeLinecap="round"
