@@ -45,7 +45,7 @@ const CardMangas = () => {
               .reverse()
               .map((categ, index) => (
                 <button
-                  style={{ color:categ.color , backgroundColor: categ.shadow }}
+                  style={{ color:categ.shadow , backgroundColor:  categ.color}}
                   onClick={() => dispatch(setCategory(categ._id))}
                   key={index}
                   className="px-4 py-2 rounded-full text-sm font-semibold"
