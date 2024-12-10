@@ -108,6 +108,16 @@ function SignInLogin() {
             <img src={imagenGoogle} alt="Google" className="w-5 h-5 mr-2" />
             Sign in with Google
           </button>
+          {error && !loading && (
+            <p className="mt-2 text-center font-bold text-sm text-red-500">
+             Invalid email or password. Please ensure your credentials are correct and try again
+            </p>
+          )}
+          {loading && !error && (
+            <p className="mt-2 text-center text-sm text-teal-400 animate-pulse">
+              Loading...
+            </p>
+          )}
         </div>
       </form>
 

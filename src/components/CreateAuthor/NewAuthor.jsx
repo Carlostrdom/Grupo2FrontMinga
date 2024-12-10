@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   createAuthor,
-  setUser,
 } from "../../store/action/actionsignin/actionsignin";
 
 const NewAuthorForm = () => {
   const { user, token } = useSelector((state) => state.signinStore);
-  console.log(user, "userasda carlosesete");
+  console.log(user.user._id, "userasda carlosesete");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 

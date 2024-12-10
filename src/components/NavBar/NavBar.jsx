@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/logotex.png";
 import { logout } from "../../store/action/actionsignin/actionsignin";
 
@@ -45,9 +45,10 @@ const NavBar = () => {
   const { user, token, role, loading } = useSelector(
     (state) => state.signinStore || {}
   );
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
-  console.log(user, "user que esta en navBar");
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -80,7 +81,7 @@ const NavBar = () => {
 
           <div className="flex items-center">
             <img className="w-25 h-10" src={logo} alt="Logo" />
-            <p className="text-3xl font-bold ml-2 mr-10">雪</p>
+            <p className="text-3xl text-white font-bold ml-2 mr-10">雪</p>
           </div>
         </div>
 
@@ -90,17 +91,17 @@ const NavBar = () => {
               <div className="flex items-center justify-start gap-4 mb-6">
                 <img
                   src={
-                    user.photo ? user.photo : user.user.photo || defaultPhoto
+                    user?.photo ? user.photo : user.user.photo || defaultPhoto
                   }
                   alt="User Avatar"
-                  className="w-16 h-16 rounded-full border-2 border-white"
+                  className="w-[11vh] h-[11vh] rounded-full object-cover"
                 />
                 <p className="text-lg">
                   {user?.email ? user.email : user.user.email}
                 </p>
               </div>
             )}
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col items-center gap-4">
               {(role == null
                 ? rolePermissions.noLoggin
                 : rolePermissions[role]
@@ -109,7 +110,7 @@ const NavBar = () => {
                   <Link
                     to={route.to}
                     onClick={toggleMenu}
-                    className="text-lg hover:text-orange-500 hover:bg-white transition-colors py-2 px-4 rounded"
+                    className="text-lg hover:text-orange-500 hover:bg-white transition-colors py-2 px-4 sm:px-8 md:px-12 lg:px-28 rounded"
                   >
                     {route.text}
                   </Link>
@@ -122,6 +123,7 @@ const NavBar = () => {
                 onClick={() => {
                   dispatch(logout());
                   toggleMenu();
+                  navigate("/home"); // Redirige al usuario a /home
                 }}
                 className="mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded"
               >

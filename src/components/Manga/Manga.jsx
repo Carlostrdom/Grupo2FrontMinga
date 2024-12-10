@@ -12,6 +12,12 @@ const Manga = () => {
     (state) => state.chapterStore
   );
 
+  const navigate = useNavigate();
+  const handleChapterClick = () => {
+    
+    navigate("/favourite", { state: selectedManga });
+  }
+
   const [activeTab, setActiveTab] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const chaptersPerPage = 3;
@@ -73,11 +79,26 @@ const Manga = () => {
 
       {/* Right Side: Content */}
       <div className="w-full md:w-1/2 mt-20 px-4 py-6 space-y-6">
+        {/* Manga Info */}
+        <div className="text-center">
+          <h1 className="text-3xl font-bold">{selectedManga?.title}</h1>
+          <p className="mt-2 text-sm text-gray-600">{selectedManga?.pages}</p>
+        </div>
+{/* Category and Company */}
+<div className="flex items-center justify-between w-full max-w-md">
+            <span className="bg-red-100 text-red-500 text-sm md:text-lg font-semibold px-4 py-1 rounded-full">
+              Shōnen
+            </span>
+            <p className="text-gray-500 text-sm md:text-lg font-medium">Company Name</p>
+          </div>
+          
         <div className="flex flex-col items-center space-y-6 mt-6">
           {/* Reactions Section */}
           <div className="flex space-x-4 p-4 border border-gray-300 rounded-lg">
             {/* Like Button */}
-            <button className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition">
+            <button 
+            onClick={() => {handleChapterClick()}}
+            className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -165,12 +186,7 @@ const Manga = () => {
             </div>
           </div>
         </div>
-        {/* Manga Info */}
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">{selectedManga?.title}</h1>
-          <p className="mt-2 text-sm text-gray-600">{selectedManga?.pages}</p>
-        </div>
-
+      
         {/* Tabs */}
         <div className="flex justify-center space-x-2 border-b">
           <button

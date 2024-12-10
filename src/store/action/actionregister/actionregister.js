@@ -11,14 +11,13 @@ const createUser = createAsyncThunk("USER_CREATE", async ({ email, password, pho
             password,
             photo,         
             online: true,
-            role: 0
         };
 
        
         const response = await axios.post("http://localhost:8080/api/users/register", user);
 
+       console.log(response.data,"response.data ultima");
        
-
         return response.data;
     } catch (error) {
         console.error("Error en la creación del usuario:", error.response || error.message);

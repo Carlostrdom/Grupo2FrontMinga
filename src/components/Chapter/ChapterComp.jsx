@@ -40,29 +40,50 @@ const MangaReader = () => {
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 0}
-            className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full transition-all hover:bg-blue-700 disabled:bg-gray-400"
+            className="px-4 py-2 bg-orange-500 text-white font-bold rounded-full transition-all hover:bg-orange-400 disabled:bg-gray-400"
           >
             Prev
           </button>
-          <span className="text-lg font-medium text-gray-800">
+          <span className="text-lg font-medium text-orange-500">
             Page {currentPage + 1} of {pages.length}
           </span>
           <button
             onClick={handleNextPage}
             disabled={currentPage === pages.length - 1}
-            className="px-4 py-2 bg-blue-600 text-white font-bold rounded-full transition-all hover:bg-blue-700 disabled:bg-gray-400"
+            className="px-4 py-2 bg-orange-500 text-white font-bold rounded-full transition-all hover:bg-orange-400 disabled:bg-gray-400"
           >
             Next
           </button>
         </div>
 
         {/* Imagen de la página actual */}
-        <div className="relative bg-black rounded-lg overflow-hidden shadow-lg">
+        <div className="relative bg-black rounded-lg overflow-hidden p-6 shadow-lg">
           <img
             src={pages[currentPage]}
             alt={`Page ${currentPage + 1}`}
             className="w-full h-auto max-w-[600px] mx-auto"
           />
+        </div>
+
+         {/* Controles de navegación */}
+         <div className="flex justify-between items-center p-6 mb-4">
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 0}
+            className="px-4 py-2 bg-orange-500 text-white font-bold rounded-full transition-all hover:bg-orange-400 disabled:bg-gray-400"
+          >
+            Prev
+          </button>
+          <span className="text-lg font-medium text-orange-500">
+            Page {currentPage + 1} of {pages.length}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === pages.length - 1}
+            className="px-4 py-2 bg-orange-500 text-white font-bold rounded-full transition-all hover:bg-orange-400 disabled:bg-gray-400"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
