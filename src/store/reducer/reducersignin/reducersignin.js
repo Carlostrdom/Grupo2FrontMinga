@@ -38,10 +38,9 @@ const initialState = {
     })
 
     .addCase(setUser,(state,action)=>{    
-        console.log("setUser",action.payload.user.user.role);
           
         state.user = action.payload.user,
-        state.role = action.payload.user.user.role,
+        state.role = action.payload.user.user ? action.payload.user.user.role : action.payload.user.role,
         state.token = action.payload.token || localStorage.getItem("token") 
         action.payload.token && localStorage.setItem("token", action.payload.token);
     })

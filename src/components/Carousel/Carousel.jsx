@@ -30,15 +30,15 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto my-16 hidden md:block">
-      <div className="bg-orange-500 rounded-xl shadow-xl h-96 overflow-visible relative">
-        <div className="grid grid-cols-12 h-full px-8">
+    <div className="relative w-[80%] h-[60vh] max-w-6xl mx-auto my-16 hidden md:block">
+      <div className="bg-orange-500 rounded-xl shadow-xl h-[44.4vh] overflow-visible relative">
+        <div className="grid grid-cols-12 h-full  px-10 ]">
           <div className="col-span-3 flex items-center">
             {category.length > 0 && category[currentSlide] && (
               <img
                 src={category[currentSlide].cover_photo}
                 alt="Left"
-                className="w-full h-[30vh] object-cover rounded-lg shadow-lg"
+                className=" h-[50vh] absolute object-cover rounded-lg "
               />
             )}
           </div>

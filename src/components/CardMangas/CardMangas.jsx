@@ -7,7 +7,6 @@ import { fetchmangas } from "../../store/action/actionmangas/actionmangas";
 const CardMangas = () => {
   const {mangas, loading, error } = useSelector(state => state.mangasStore);
   const {category, selecCategory} = useSelector(state => state.categoryStore);
- console.log(category,"manger");
  const navigate = useNavigate();
  
   let dispatch = useDispatch();  
@@ -45,7 +44,7 @@ const CardMangas = () => {
               .reverse()
               .map((categ, index) => (
                 <button
-                  style={{ color:categ.shadow , backgroundColor:  categ.color}}
+                  style={{ color:categ.color , backgroundColor: categ.shadow }}
                   onClick={() => dispatch(setCategory(categ._id))}
                   key={index}
                   className="px-4 py-2 rounded-full text-sm font-semibold"
@@ -101,7 +100,7 @@ const CardMangas = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-500">No mangas found.</p>
+          <p className="text-center bg-orange-500 rounded-xl flex items-center flex-col text-xl text-white p-4" ><img src="https://s3-alpha-sig.figma.com/img/74c1/1422/523fb73c0843c17b79f58c0508ca9f7a?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kzZY5NIhLUfcd6JEzBhN3AxDdBvBjF375QHGbyYEihS7WuOCDeQjhCBoGiCxnjstD5zIL8~XLyebK179g99lGmPBVAvGrMenMfiD7K3a4irkOjLQ5qvYQnoVN3qBL2EEwgAMTwoaKeH1HW68DK8eh6ij6d38kN1V7uktpTfAngHpBRF0BNgcvTS5nUg4wrqbTWo2MlAy7Lc9f3g~WMfzAj2Wm8WeRwbCER5LNDcU82gdGw3e5XCsF8GykXsIU1EEClyCurjEjC225hCFcRWUeHpIX2-7-~3dLQhBKOQQantwyAmJCVNTQ1A9UyHjuJks952BowU8v5Zil6resw0GeQ__" alt="" />Not Mangas found.</p>
         )}
       </div>
     </div>

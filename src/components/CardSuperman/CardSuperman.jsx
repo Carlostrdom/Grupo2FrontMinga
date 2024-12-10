@@ -10,16 +10,14 @@ import { fetchmangas } from "../../store/action/actionmangas/actionmangas";
 import { useNavigate } from "react-router-dom";
 
 const CardSuperman = () => {
-  const navigate = useNavigate(); // Hook para manejar redirecciones
-
+  const navigate = useNavigate(); 
   const handleEditRedirect = () => {
-    navigate("/editChapter"); // Redirige a la ruta editCharter
+    navigate("/editChapter"); 
   };
   const { mangas, loading, error } = useSelector((state) => state.mangasStore);
   const { category, selecCategory } = useSelector(
     (state) => state.categoryStore
   );
-  console.log(category, "manger");
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -42,7 +40,7 @@ const CardSuperman = () => {
               .reverse()
               .map((categ, index) => (
                 <button
-                  style={{ color: categ.shadow, backgroundColor: categ.color }}
+                  style={{ color: categ.color, backgroundColor: categ.shadow }}
                   onClick={() => dispatch(setCategory(categ._id))}
                   key={index}
                   className="px-4 py-2 rounded-full text-sm font-semibold "
@@ -69,7 +67,8 @@ const CardSuperman = () => {
                     {manga.title}
                   </h3>
                   <p className="text-sm text-gray-500">{manga.genre}</p>
-                  <p className={`text-sm ${manga.typeColor}`}>Type</p>
+                  <p style={{ color: manga.category_id?.color }}
+                  className={`text-sm }`}>Type</p>
                 </div>
 
                 <div className="flex gap-2 absolute bottom-2 left-2">

@@ -38,6 +38,10 @@ function SignUpRegister() {
             break;
         }
       };    
+      const handleGoogleLogin = () => {
+        window.location.href = "http://localhost:8080/api/auth/signIn/google";    
+      };
+    
       const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createUser({ email, password, photo, online: true, role: 0 }));
@@ -184,18 +188,25 @@ function SignUpRegister() {
                              Sign up
                          </button>
                      </div>
+                     
                      <div className="mt-4">
-                         <button
-                             type="button"
-                             className="w-full flex items-center justify-center bg-white text-gray-700 border rounded-lg py-2 shadow-sm hover:bg-gray-100"
-                         >
-                             <img
-                                 src={imagenGoogle}
-                                 alt="Google"
-                                 className="w-5 h-5 mr-2"
-                             />
-                             Sign in with Google
-                        </button>
+                     <button
+            type="button"
+            className="w-full flex items-center justify-center bg-white text-gray-700 border rounded-lg py-2 shadow-sm hover:bg-gray-100"
+            onClick={() => handleGoogleLogin()}>
+            <img src={imagenGoogle} alt="Google" className="w-5 h-5 mr-2" />
+            Sign in with Google
+          </button>
+                        {error && !loading && (
+            <p className="mt-2 text-center font-bold text-sm text-red-500">
+             Invalid email or password. Please ensure your credentials are correct and try again
+            </p>
+          )}
+          {loading && error && (
+            <p className="mt-2 text-center text-sm text-teal-400 animate-pulse">
+              Loading...
+            </p>
+          )}
                      </div>
                      <div className="mt-6 text-center">
                          <p className="text-sm text-black">
@@ -208,6 +219,7 @@ function SignUpRegister() {
                              Go back to home page
                          </Link>
                      </div>
+                    
                  </form>
             </div>
             {/* Imagen */}

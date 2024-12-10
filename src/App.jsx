@@ -36,7 +36,7 @@ import Company from "./components/Company/Company"
 import ChapterRead from "./pages/Chapter";
 import MangaPage from "./pages/Manga";
 import NotFound from "./components/NotFound/NotFound";
-import Author from "./components/Author.jsx/Author"
+import Author from "./components/Author/Author"
 
 
 const router = createBrowserRouter([
