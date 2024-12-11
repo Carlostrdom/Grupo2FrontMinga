@@ -4,9 +4,7 @@ import { useLocation } from "react-router-dom";
 const MangaReader = () => {
   const location = useLocation();
   const selectedManga = location.state;
-  console.log(location, "location este es");
 
-  console.log(selectedManga, "selectedManga asdawad");
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -27,9 +25,34 @@ const MangaReader = () => {
     if (currentPage > 0) setCurrentPage((prev) => prev - 1);
   };
 
+
+  const [isNew, setIsNew] = useState(true);
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsOn(!isOn);
+    setIsNew(!isNew);
+  };
+  const goBack = () => {
+    window.history.back();
+  };
   return (
     <div className="flex justify-center items-center bg-gray-900 min-h-screen">
       <div className="mt-20 bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
+         {/* Botón Regresar */}
+      <div className="w-full mt-6 lg:w-2/3 flex justify-start">
+        <button
+          onClick={goBack}
+          className={`px-2 py-2 border font-semibold rounded-lg shadow-md transition-colors ${
+            isOn
+              ? "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+              : "border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
+          }`}
+        >
+          ← Back
+        </button>
+      </div>
+
         {/* Título del capítulo */}
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">
           {selectedManga.title}

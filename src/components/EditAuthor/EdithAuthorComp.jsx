@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 const EdithAuthorComp = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [location, setLocation] = useState("");
-  const [Date, setDate] = useState("");
-  const [photo, setPhoto] = useState("");
+  const { company } = useSelector((state) => state.signinStore);
+  console.log("company edit company" , company);
+  
+  const [firstName, setFirstName] = useState(company?.name);
+  const [lastName, setLastName] = useState(company?.last_name);
+  const [location, setLocation] = useState(company?.city);
+  const [Date, setDate] = useState(company?.date);
+  const [photo, setPhoto] = useState(company?.photo);
 
   const handleSave = () => {
     console.log("Saving author:", {

@@ -5,7 +5,7 @@ const initialState = {
         category: [],
         loading: true,
         error: false,
-        selecCategory: ""
+        selecCategory: null
 
     };
     

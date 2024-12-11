@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { login, setUser,logout, createAuthor, newCompany } from "../../action/actionsignin/actionsignin";
+import { login, setUser,logout, createAuthor, newCompany, setAuthor, setCompany } from "../../action/actionsignin/actionsignin";
 
 const initialState = {  
     loading: false,
@@ -16,10 +16,14 @@ const initialState = {
     builder.addCase(login.fulfilled,(state,action)=>{    
         state.loading = false;
         state.error = false;
+        console.log(action.payload, "action.payload redux");
+        
         state.user = action.payload.user;
         state.token = action.payload.token
         localStorage.setItem("token", action.payload.token);
         state.role = action.payload.user.role
+        state.company = action.payload.company
+        state.author = action.payload.author
 
     })
     .addCase(login.pending,(state,action)=>{     
@@ -38,7 +42,8 @@ const initialState = {
     })
 
     .addCase(setUser,(state,action)=>{    
-          
+        state.author = action.payload.author,
+        state.company = action.payload.company,
         state.user = action.payload.user,
         state.role = action.payload.user.user ? action.payload.user.user.role : action.payload.user.role,
         state.token = action.payload.token || localStorage.getItem("token") 
@@ -78,8 +83,12 @@ const initialState = {
         state.loading = false;
         state.error = true;
         state.company = [];
-    })
+    }).addCase(setAuthor,(state,action)=>{
+        state.author = action.payload
 
+        
+    }).addCase(setCompany,(state,action)=>{
+        state.company = action.payload})
 })
 
 export default reducerSignin;
