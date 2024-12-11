@@ -14,6 +14,9 @@ const CardSuperman = () => {
   const handleEditRedirect = () => {
     navigate("/editChapter"); 
   };
+
+  const { user,author,company } = useSelector((state) => state.signinStore);
+
   const { mangas, loading, error } = useSelector((state) => state.mangasStore);
   const { category, selecCategory } = useSelector(
     (state) => state.categoryStore

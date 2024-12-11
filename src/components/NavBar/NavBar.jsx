@@ -21,7 +21,7 @@ const rolePermissions = {
     { to: "/mangas", text: "Mangas" },
     { to: "/authorprofile", text: "Author Profile" },
     { to: "/manager", text: "Manager" },
-    { to: "/author", text: "Author" },
+
   ],
   2: [
     { to: "/", text: "Home" },

@@ -3,16 +3,20 @@ import axios from "axios";
 
 
 const setUser = createAction("setUser", (datos)=>{
-    console.log("datos ya sabes",datos);
     
     const pay={
         user:datos.user || datos.user.user, 
-        token:datos.token
+        token:datos.token ,
+        author:datos.user.author || datos.author,
+        company:datos.user.company || datos.company
     }
     return {        
         payload:pay,
     }
 })
+
+const setAuthor = createAction("setAuthor")
+const setCompany = createAction("setCompany");
 
 
 const logout = createAction("logout");
@@ -24,7 +28,6 @@ const login = createAsyncThunk("login", async({email,password}) => {
     }
     
     const response = await axios.post("http://localhost:8080/api/auth/signIn",credentials)
-      console.log(response.data,"response.data");
       
    
     return response.data
@@ -78,4 +81,4 @@ const createAuthor = createAsyncThunk("AUTHOR_CREATE", async ({ name, last_name,
         }
       );
 
-export {login,setUser,logout,createAuthor,newCompany};
+export {login,setUser,logout,createAuthor,newCompany,setAuthor,setCompany};

@@ -6,39 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 const Author = () => {
-  const { user } = useSelector((state) => state.signinStore);
-  const [author, setAuthor] = useState([]);
+  const { user,author,company } = useSelector((state) => state.signinStore);
+  
   const [mangasAutor, setMagasAutor] = useState([]);
   console.log(mangasAutor, "mangasAutor adwadawdad");
   console.log(author, "author quenecesito");
+  
 
-  useEffect(() => {
-    const fetchAuthor = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          `http://localhost:8080/api/author/user/${user.user._id}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        setAuthor(response.data.response);
-      } catch (error) {
-        console.error("Error fetching author:", error);
-      }
-    };
-
-    fetchAuthor();
-  }, [user.user._id]);
-
-  const city = author.length > 0 ? author[0].city : "Loading...";
-  const date = author.length > 0 ? author[0].date : "Loading...";
-  const photo = author.length > 0 ? author[0].photo : "";
-  const name = author.length > 0 ? author[0].name : "Loading...";
-  const lastname = author.length > 0 ? author[0].last_name : "Loading...";
-  const authora = author.length > 0 ? author[0]._id : "Loading...";
+  const date = author ? author.date : "Loading..."; 
+  const authora = author ? author._id : "Loading...";
   const rawDate = date;
-  const formattedDate = rawDate.split("T")[0];
+  const formattedDate = rawDate?.split("T")[0];
+  
 
   useEffect(() => {
     const fetchmagasAutor = async () => {
@@ -62,7 +41,11 @@ const Author = () => {
   const [isNew, setIsNew] = useState(true);
   const [isOn, setIsOn] = useState(false);
   const navigate = useNavigate();
-
+  
+  const navigateProfile = () => {
+    navigate("/authorprofile")
+  }
+  
   const toggleSwitch = () => {
     setIsOn(!isOn);
     setIsNew(!isNew);
@@ -78,22 +61,22 @@ const Author = () => {
       <div className="relative w-full flex flex-col items-center justify-center mb-12 lg:w-2/3 lg:max-w-4xl rounded-lg shadow-lg  ">
         <div className="absolute inset-0 hidden md:block">
           <img
-            src={user?.user.photo ? user?.user.photo : bgProfiles}
-            alt="Background"
+            src={author?.photo} alt={author.name}
+           
             className="w-full h-full object-cover rounded-lg md:h-72 lg:h-96 "
           />
         </div>
         <div className="relative flex flex-row items-center w-full px-4 py-8 text-left md:flex-col md:items-center md:justify-center md:py-12">
           {/* Imagen del autor */}
           <img
-            src={photo}
+            src={user?.user?.photo ? user?.user?.photo : bgProfiles}
             alt="Author Avatar"
             className="w-28 h-28 rounded-full object-cover border-4 border-white md:w-36 md:h-36 lg:w-44 lg:h-44"
           />
           {/* Texto del autor */}
           <div className="flex-1 mt-4 md:mt-0 md:ml-6">
             <h1 className="text-lg font-bold text-black bg md:text-2xl lg:text-3xl">
-              {name} {lastname}
+              {author.last_name} {author.name}
             </h1>
             <p className="text-sm text-black flex items-center mt-2 md:text-base">
               <svg
@@ -115,7 +98,7 @@ const Author = () => {
                   d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                 />
               </svg>
-              {city}
+              {author.city}
             </p>
             <p className="text-sm text-black flex items-center mt-2 md:text-base">
               <svg
@@ -136,7 +119,7 @@ const Author = () => {
             </p>
           </div>
           {/* Botón de editar */}
-          <button className="absolute top-4 right-4 md:static p-2 bg-gray-200 hover:bg-gray-300 text-black rounded-lg shadow">
+          <button className="absolute top-4 right-4 md:static p-2 bg-gray-200 hover:bg-gray-300 text-black rounded-lg shadow" onClick={() => navigateProfile()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

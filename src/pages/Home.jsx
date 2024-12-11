@@ -1,7 +1,5 @@
-import Hero from "../components/Hero/Hero";
 import imagenHome from "../assets/image/bgHome.png";
 import { useNavigate } from "react-router-dom";
-import Carousel from "../components/Carousel/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -22,6 +20,7 @@ const loginWithToken = async (token) => {
 };
 
 const HeroHome = ({ handleClick }) => {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.signinStore.user);
@@ -94,7 +93,7 @@ const Home = () => {
       {/* Mostrar el resto solo en pantallas más grandes */}
       <div className="hidden sm:block">
         <HeroHome handleClick={handleClick} />
-        <Carousel />
+        <modOscuro />
       </div>
     </>
   );

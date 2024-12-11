@@ -7,7 +7,8 @@ import {
 
 const NewAuthorForm = () => {
   const { user, token } = useSelector((state) => state.signinStore);
-  console.log(user.user._id, "userasda carlosesete");
+  console.log(user,  "user y token");
+  
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
