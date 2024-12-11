@@ -1,5 +1,6 @@
 import imagenHome from "../assets/image/bgHome.png";
 import { useNavigate } from "react-router-dom";
+import Carousel from "../components/Carousel/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -93,7 +94,8 @@ const Home = () => {
       {/* Mostrar el resto solo en pantallas más grandes */}
       <div className="hidden sm:block">
         <HeroHome handleClick={handleClick} />
-        <modOscuro />
+        <Carousel />
+       
       </div>
     </>
   );
