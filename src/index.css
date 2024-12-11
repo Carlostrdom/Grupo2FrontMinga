@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.dark a {
+    color: #ffffff;
+  }
+  
+  body.dark .bg-orange-500 {
+    background-color: #333333;
+  }
+  
+  body.dark .hover\\:bg-orange-600:hover {
+    background-color: #444444;
+  }
+  

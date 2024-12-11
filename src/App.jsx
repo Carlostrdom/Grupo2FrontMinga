@@ -76,11 +76,10 @@ const router = createBrowserRouter([
       { path: "/editCompany", element: <EditCompany /> },
       {
         path: "/newManga",
-        element: (
-          <AuthRoute>
-            {" "}
-            <NewMangaForm />{" "}
-          </AuthRoute>
+        element: (        
+           
+            <NewMangaForm />
+        
         ),
       },
       { path: "/newChapter", element: <NewCahpterForm /> },

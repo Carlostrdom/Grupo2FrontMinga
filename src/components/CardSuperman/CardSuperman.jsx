@@ -15,7 +15,10 @@ const CardSuperman = () => {
     navigate("/editChapter"); 
   };
 
-  const { user,author,company } = useSelector((state) => state.signinStore);
+const handlenewManga = () => {
+  navigate("/newManga");
+  
+}
 
   const { mangas, loading, error } = useSelector((state) => state.mangasStore);
   const { category, selecCategory } = useSelector(
@@ -51,6 +54,13 @@ const CardSuperman = () => {
                   {categ.name}
                 </button>
               ))}
+              <button
+            onClick={() => handlenewManga()}
+            className="px-4 py-2 rounded-full text-sm font-semibold bg-red-400 text-white hidden md:block"
+          >
+            Create new Manga
+          </button>
+              
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">

@@ -16,7 +16,7 @@ const HeroManga = () => {
     if (search !== '') data.search = search;
     if (selecCategory !== '') data.category = selecCategory;
 
-    // Solicitar los mangas en base a la búsqueda o la categoría
+    
     if (search !== '' || selecCategory !== '') {
       dispatch(fetchmangas(data));
     } else {

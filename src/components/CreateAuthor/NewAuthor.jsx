@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   createAuthor,
 } from "../../store/action/actionsignin/actionsignin";
+import Swal from "sweetalert2";
 
 const NewAuthorForm = () => {
   const { user, token } = useSelector((state) => state.signinStore);
@@ -21,7 +22,7 @@ const NewAuthorForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user.user._id, "user._id que esta en newAuthor");
@@ -38,8 +39,17 @@ const NewAuthorForm = () => {
           user_id: user.user._id,
         })
       );
+      Swal.fire({
+        background: "#000000",
+        color: "#fff",
+        imageUrl: "https://cdn.pixabay.com/photo/2015/10/07/22/54/pen-spinning-976930_640.jpg",
+        imageHeight: 300,
+        imageAlt: "A tall image",
+        text: `welcome ${name} to the world of manga`,
+        icon: "success",
+      });
 
-      navigate("/manager");
+      navigate("/home");
       console.log(createAuthor, "createAuthor ya sabes");
     } catch (err) {
       setError("Failed to create author. Please try again.");
@@ -75,6 +85,15 @@ const NewAuthorForm = () => {
     }
   };
 
+
+  
+
+  const [ image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/07/22/54/pen-spinning-976930_640.jpg");
+
+  useEffect(() => {
+    if( photo!== "")setImage(photo)
+  },[photo])
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="w-11/12 sm:w-96 lg:w-1/3 bg-white text-gray-800 rounded-lg shadow-lg p-6">
@@ -86,7 +105,7 @@ const NewAuthorForm = () => {
           <div className="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
             <img
               src={
-                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                image
               }
               alt="Profile Placeholder"
               className="w-full h-full object-cover"
