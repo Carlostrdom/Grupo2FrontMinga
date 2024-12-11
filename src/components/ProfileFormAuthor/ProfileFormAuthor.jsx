@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setAuthor } from "../../store/action/actionsignin/actionsignin";
+import Swal from "sweetalert2";
 
 const ProfileFormAuth = () => {
   const { author } = useSelector((state) => state.signinStore);
@@ -29,6 +30,15 @@ const ProfileFormAuth = () => {
           photo: photo,
           _id: author._id,
         },
+        Swal.fire({
+          background: "#000000",
+          color: "#fff",
+          imageUrl: "https://i0.wp.com/anmtv.com.br/wp-content/uploads/one-punch-man-2.jpg?resize=800%2C400&ssl=1",
+          imageHeight: 200,
+          imageAlt: "A tall image",
+          text: `Congratulations edited profile`,
+          
+        }),
 
         {
           headers: { Authorization: `Bearer ${token}` },

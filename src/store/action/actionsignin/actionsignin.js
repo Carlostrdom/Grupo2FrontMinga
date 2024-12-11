@@ -48,7 +48,7 @@ const createAuthor = createAsyncThunk("AUTHOR_CREATE", async ({ name, last_name,
         console.log(author,"author ya sabes");
         
         const response = await axios.post("http://localhost:8080/api/author/create", author);
-        return response.data;
+        return response.data.response;
         
        } catch (error) {
         console.error("Error en la creación del usuario:", error.response || error.message);

@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../store/action/actioncategory/actioncategory";
 import { useNavigate } from "react-router-dom";
 import { fetchmangas } from "../../store/action/actionmangas/actionmangas";
-
+import Swal from "sweetalert2";
 const CardMangas = () => {
-  const {mangas, loading, error } = useSelector(state => state.mangasStore);
+  const { user, token } = useSelector((state) => state.signinStore);
+
+  const {mangas, loading, error, search} = useSelector(state => state.mangasStore);
   const {category, selecCategory} = useSelector(state => state.categoryStore);
  const navigate = useNavigate();
  
   let dispatch = useDispatch();  
   useEffect(() => {
-    dispatch(fetchmangas({category:selecCategory}))
+    dispatch(fetchmangas({category:selecCategory, search:search}));
     
   },[selecCategory])
 
@@ -19,7 +21,22 @@ const CardMangas = () => {
     if (isLoggedIn) {
       navigate("/manga", { state: manga });
     } else {
-      navigate("/signIn");
+
+       Swal.fire({
+
+        icon: "error",
+        background: "#000000",
+        color: "#fff",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2UrAcRbbfn7rBtLDPuG-BsfSfgzh-M-GG8A&sg",
+        imageHeight: 200,
+        imageAlt: "A tall image",
+        text: `"Sorry, you must log in to access this page."`,
+        confirmButtonText: "ok",
+        preConfirm: () => {
+          return       navigate("/signIn")
+        
+        },
+      });
     }
   };
 

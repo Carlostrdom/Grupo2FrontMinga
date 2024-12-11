@@ -16,7 +16,6 @@ const initialState = {
     builder.addCase(login.fulfilled,(state,action)=>{    
         state.loading = false;
         state.error = false;
-        console.log(action.payload, "action.payload redux");
         
         state.user = action.payload.user;
         state.token = action.payload.token
